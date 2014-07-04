@@ -16,7 +16,7 @@
 
 				<p:panel header="Datos Kardex">
 
-					<p:messages />
+<!-- 					<p:messages /> -->
 
 
 
@@ -42,7 +42,7 @@
 
 
 						<p:outputLabel for="acto" value="#{mensaje['campo.acto.acto']}" />
-						<p:selectOneMenu id="acto" value="#{kardexController.acto}">
+						<p:selectOneMenu id="acto" value="#{kardexController.acto}" >
 							<f:selectItem itemLabel="Seleccionar" itemValue="" />
 							<f:selectItems value="#{actoController.actos}" var="acto"
 								itemLabel="#{acto.acto}" itemValue="#{acto.idkaac}" />
@@ -98,7 +98,7 @@
         <p:calendar id="popup" pattern="MM/dd/yyyy HH:mm:ss" value="#{kardexController.kardex.feccrea}" />
 
 
-						<p:commandButton value="Re" update=":form1"
+						<p:commandButton value="Re" update="form1"
 							actionListener="#{kardexController.registrar}"
 							validateClient="true" />
 						<p:commandButton value="Limpiar" type="reset" />
