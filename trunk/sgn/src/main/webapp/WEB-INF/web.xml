@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+
+	<display-name>sgn</display-name>
+
+	<welcome-file-list>
+		<!-- <welcome-file>paginas/modulos/seguridad/login.jsf</welcome-file> -->
+		<welcome-file>paginas/modulos/principal/registrarKardex.jsf</welcome-file>
+	</welcome-file-list>
+
+	<context-param>
+		<param-name>com.sun.faces.numberOfViewsInSession</param-name>
+		<param-value>5</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>com.sun.faces.serializeServerState</param-name>
+		<param-value>false</param-value>
+	</context-param>
+
+	<context-param>
+		<description>Para guardar el estado en el servidor o en el cliente. Por defecto es server</description>
+		<param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+		<param-value>server</param-value>
+	</context-param>
+
+	<context-param>
+		<description>Para proporcionar diagnósticos en desarrollo más detallados de lo que sería para producción</description>
+		<param-name>javax.faces.PROJECT_STAGE</param-name>
+		<param-value>Development</param-value>
+		<!-- <param-value>Production</param-value> -->
+		<!-- <param-value>SystemTest</param-value> -->
+		<!-- <param-value>UnitTest</param-value> -->
+	</context-param>
+
+	<context-param>
+		<description>Para no mostrar los comentarios de las paginas *.xhtml. Por defecto es false.</description>
+		<param-name>javax.faces.FACELETS_SKIP_COMMENTS</param-name>
+		<param-value>true</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>primefaces.CLIENT_SIDE_VALIDATION</param-name>
+		<param-value>true</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/applicationContext.xml</param-value>
+	</context-param>
+
+	<listener>
+		<listener-class>com.sun.faces.config.ConfigureListener</listener-class>
+	</listener>
+
+	<listener>
+		<description>Spring Context Listener</description>
+		<display-name>SpringContextListener</display-name>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<!-- <listener> -->
+	<!-- <listener-class> -->
+	<!-- org.springframework.web.context.request.RequestContextListener -->
+	<!-- </listener-class> -->
+	<!-- </listener> -->
+
+	<servlet>
+		<servlet-name>Faces Servlet</servlet-name>
+		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>*.jsf</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>*.jsp</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>*.xhtml</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>*.html</url-pattern>
+	</servlet-mapping>
+
+	<error-page>
+		<exception-type>java.lang.Throwable</exception-type>
+		<location>/paginas/error/error.xhtml</location>
+	</error-page>
+
+	<error-page>
+		<exception-type>javax.faces.application.ViewExpiredException</exception-type>
+		<location>/paginas/error/viewExpired.xhtml</location>
+	</error-page>
+
+	<error-page>
+		<error-code>401</error-code>
+		<location>/paginas/error/error401.xhtml</location>
+	</error-page>
+
+	<error-page>
+		<error-code>404</error-code>
+		<location>/paginas/error/error404.xhtml</location>
+	</error-page>
+
+	<error-page>
+		<error-code>500</error-code>
+		<location>/paginas/error/error500.xhtml</location>
+	</error-page>
+
+</web-app>

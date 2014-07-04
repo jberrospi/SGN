@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+	<ui:composition template="../../recursos/plantilla.xhtml">
+		<ui:define name="content">
+			<h2>Registrar Acto</h2>
+
+			<h:form id="form1">
+
+				<p:panel header="Datos Acto">
+
+					<p:messages />
+
+					<p:outputLabel for="acto" value="#{mensaje['campo.acto.acto']}" />
+					<p:inputText id="acto" value="#{actoController.acto.acto}"
+						required="true" label="Acto">
+						<f:validateLength maximum="10" />
+					</p:inputText>
+					<p:message for="acto" display="icon" />
+
+					<p:panelGrid columns="6" style="boder:0px;">
+
+						<p:outputLabel for="codpdt"
+							value="#{mensaje['campo.acto.codPdt']}" />
+						<p:inputText id="codpdt" value="#{actoController.acto.codpdt}"
+							required="true" label="Codigo PDT">
+							<f:validateLength maximum="10" />
+						</p:inputText>
+						<p:message for="codpdt" display="icon" />
+
+						<p:outputLabel for="coduif"
+							value="#{mensaje['campo.acto.coduif']}" />
+						<p:inputText id="coduif" value="#{actoController.acto.coduif}"
+							required="true" label="Codigo UIF">
+							<f:validateLength minimum="10" maximum="10" />
+						</p:inputText>
+						<p:message for="coduif" display="icon" />
+
+						<p:commandButton value="Re" update=":form1"
+							actionListener="#{actoController.registrar}"
+							validateClient="true" />
+						<p:commandButton value="Limpiar" type="reset" />
+						<p:spacer />
+
+					</p:panelGrid>
+
+					<!-- 		</p:panelGrid> -->
+				</p:panel>
+
+			</h:form>
+
+
+
+
+		</ui:define>
+	</ui:composition>
+
+
+
+
+
+
+
+
+</h:body>
+</html>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+	<ui:composition template="../../recursos/plantilla.xhtml">
+		<ui:define name="content">
+			<h2>Mantenimiento Persona</h2>
+
+			<h:form id="form1">
+
+				<p:panel header="Registro Persona">
+
+					<p:messages />
+
+
+					<p:panelGrid columns="6" style="boder:0px;">
+						<p:outputLabel for="apepat"
+							value="#{mensaje['campo.mantPersona.apePat']}" />
+						<p:inputText id="apepat"
+							value="#{personaController.persona.apepat}" required="true"
+							label="Apellido Paterno">
+							<f:validateLength minimum="4" maximum="50" />
+						</p:inputText>
+						<p:message for="apepat" display="icon" />
+
+						<p:outputLabel for="apemat"
+							value="#{mensaje['campo.mantPersona.apeMat']}" />
+						<p:inputText id="apemat"
+							value="#{personaController.persona.apemat}" required="true"
+							label="Apellido Materno">
+							<f:validateLength minimum="4" maximum="50" />
+						</p:inputText>
+						<p:message for="apemat" display="icon" />
+
+						<p:outputLabel for="prinom"
+							value="#{mensaje['campo.mantPersona.priNom']}" />
+						<p:inputText id="prinom"
+							value="#{personaController.persona.prinom}" required="true"
+							label="Primer Nombre">
+							<f:validateLength minimum="4" maximum="50" />
+						</p:inputText>
+						<p:message for="prinom" display="icon" />
+
+						<p:outputLabel for="segnom"
+							value="#{mensaje['campo.mantPersona.segNom']}" />
+						<p:inputText id="segnom"
+							value="#{personaController.persona.segnom}" required="true"
+							label="Segundo Nombre">
+							<f:validateLength minimum="4" maximum="50" />
+						</p:inputText>
+						<p:message for="segnom" display="icon" />
+
+
+
+						<p:outputLabel for="docidentidad"
+							value="#{mensaje['campo.mantPersona.docIdentidad']}" />
+						<p:inputText id="docidentidad"
+							value="#{personaController.persona.docidentidad}"
+							required="false" label="Doc. Identidad">
+							<f:validateLength minimum="8" maximum="20" />
+						</p:inputText>
+						<p:message for="docidentidad" display="icon" />
+
+
+						<p:outputLabel for="ruc"
+							value="#{mensaje['campo.mantPersona.ruc']}" />
+						<p:inputText id="ruc" value="#{personaController.persona.ruc}"
+							required="false" label="RUC">
+							<f:validateLength minimum="11" maximum="20" />
+						</p:inputText>
+						<p:message for="ruc" display="icon" />
+
+
+						<p:outputLabel for="direccion"
+							value="#{mensaje['campo.mantPersona.direccion']}" />
+						<p:inputText id="direccion"
+							value="#{personaController.persona.direccion}" required="true"
+							label="Direccion">
+							<f:validateLength minimum="10" maximum="200" />
+						</p:inputText>
+						<p:message for="direccion" display="icon" />
+
+
+						<p:outputLabel for="email"
+							value="#{mensaje['campo.mantPersona.email']}" />
+						<p:inputText id="email" value="#{personaController.persona.email}"
+							required="true" label="Email">
+							<f:validateLength minimum="10" maximum="100" />
+						</p:inputText>
+						<p:message for="email" display="icon" />
+
+						<p:outputLabel for="estadocivil"
+							value="#{mensaje['campo.mantPersona.estadoCivil']}" />
+						<p:selectOneMenu id="estadocivil"
+							value="#{personaController.persona.estadocivil}">
+							<f:selectItem itemLabel="Seleccionar" itemValue="" />
+							<f:selectItems value="#{maestroController.listaTabla}" var="tabla"
+							 itemLabel="#{tabla.descripcion}" itemValue="#{tabla.id}" />
+						</p:selectOneMenu>
+						<p:message for="estadocivil" display="icon" />
+
+						<p:outputLabel for="conyuge"
+							value="#{mensaje['campo.mantPersona.conyuge']}" />
+						<p:inputText id="conyuge" value="#{personaController.conyuge}"
+							required="true" label="Conyuge">
+							<f:validateLength minimum="10" maximum="200" />
+						</p:inputText>
+						<p:message for="conyuge" display="icon" />
+
+
+
+						<p:commandButton value="Re" update=":form1"
+							actionListener="#{personaController.registrar}"
+							validateClient="true" />
+						<p:commandButton value="Limpiar" type="reset" />
+						<p:spacer />
+
+					</p:panelGrid>
+
+					<!-- 		</p:panelGrid> -->
+				</p:panel>
+
+			</h:form>
+
+
+
+
+		</ui:define>
+	</ui:composition>
+
+
+
+
+
+
+
+
+</h:body>
+</html>
