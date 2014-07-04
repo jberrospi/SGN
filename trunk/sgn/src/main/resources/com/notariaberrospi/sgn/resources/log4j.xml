@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <?xml version="1.0" encoding="UTF-8" standalone="no" ?> -->
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd" >
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<appender name="consola_sgn" class="org.apache.log4j.ConsoleAppender">
+		<param name="Append" value="true" />
+		<param name="Target" value="System.out" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<!-- [%d{ISO8601}]%5p %6.6r[%t]%x - %C.%M(%F:%L) - %m%n -->
+			<!-- SERVER: ${weblogic.Name} [%5p] [%d{dd-MM-yyyy HH:mm:ss.SSS}] (%F:%L) 
+				- %m%n -->
+			<param name="ConversionPattern" value="%d %-5p %c{1}:%L %m %n" />
+		</layout>
+	</appender>
+	
+	<!-- org.apache.log4j.RollingFileAppender -->
+	<appender name="file_sgn" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="Append" value="true" />
+		<param name="File" value="C:\LOGS/logsgn.log" />
+		<!-- <param name="Threshold" value="INFO" /> -->
+		<!-- <param name="MaxFileSize" value="512KB" /> -->
+		<!-- <param name="MaxBackupIndex" value="10" /> -->
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5p %c{1}:%L %m %n" />
+		</layout>
+	</appender>
+
+	<logger name="com.notariaberrospi">
+		<level value="debug" />
+		<appender-ref ref="consola_sgn" />
+		<appender-ref ref="file_sgn" />
+	</logger>
+
+	<root>
+		<priority value="error" />
+	</root>
+
+</log4j:configuration>
