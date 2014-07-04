@@ -16,7 +16,7 @@
 
 				<p:panel header="Registro Persona">
 
-					<p:messages />
+<!-- 					<p:messages /> -->
 
 
 					<p:panelGrid columns="6" style="boder:0px;">
@@ -100,8 +100,8 @@
 						<p:selectOneMenu id="estadocivil"
 							value="#{personaController.persona.estadocivil}">
 							<f:selectItem itemLabel="Seleccionar" itemValue="" />
-							<f:selectItems value="#{maestroController.listaTabla}" var="tabla"
-							 itemLabel="#{tabla.descripcion}" itemValue="#{tabla.id}" />
+							<f:selectItems value="#{maestroController.estadosCiviles}" var="estadoCivil"
+							 itemLabel="#{estadoCivil.descripcion}" itemValue="#{estadoCivil.id}" />
 						</p:selectOneMenu>
 						<p:message for="estadocivil" display="icon" />
 
@@ -115,7 +115,7 @@
 
 
 
-						<p:commandButton value="Re" update=":form1"
+						<p:commandButton value="Re" update="form1"
 							actionListener="#{personaController.registrar}"
 							validateClient="true" />
 						<p:commandButton value="Limpiar" type="reset" />
@@ -129,17 +129,8 @@
 			</h:form>
 
 
-
-
 		</ui:define>
 	</ui:composition>
-
-
-
-
-
-
-
 
 </h:body>
 </html>

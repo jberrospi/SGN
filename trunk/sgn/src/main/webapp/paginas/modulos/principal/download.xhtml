@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:body>
+	<ui:composition template="../../recursos/plantilla.xhtml">
+
+		<ui:define name="script">
+
+			<script type="text/javascript">
+				function start() {
+					PF('statusDialog').show();
+				}
+
+				function stop() {
+					PF('statusDialog').hide();
+				}
+			</script>
+
+		</ui:define>
+
+
+		<ui:define name="content">
+			<h2>Registrar Kardex</h2>
+
+			<p:dialog modal="true" widgetVar="statusDialog" header="Status"
+				draggable="false" closable="false" resizable="false">
+				<p:graphicImage name="/images/ajaxloadingbar.gif" />
+			</p:dialog>
+
+			<h:form id="form1">
+
+				<p:panel header="Descargar">
+					<p:messages />
+
+					<p:commandButton value="Download" ajax="false"
+						onclick="PrimeFaces.monitorDownload(start, stop);"
+						icon="ui-icon-arrowthick-1-s">
+						<p:fileDownload value="#{archivoController.file}" />
+					</p:commandButton>
+
+				</p:panel>
+
+			</h:form>
+
+		</ui:define>
+	</ui:composition>
+
+</h:body>
+</html>
