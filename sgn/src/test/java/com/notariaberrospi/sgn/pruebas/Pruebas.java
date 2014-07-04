@@ -1,11 +1,11 @@
-package com.notariaberrospi.pruebas;
+package com.notariaberrospi.sgn.pruebas;
 
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.notariaberrospi.entity.Usuario;
-import com.notariaberrospi.service.UsuarioService;
+import com.notariaberrospi.sgn.entity.Usuario;
+import com.notariaberrospi.sgn.service.UsuarioService;
 
 public class Pruebas extends AbstractBaseUnitTest {
 

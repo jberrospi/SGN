@@ -1,4 +1,4 @@
-package com.notariaberrospi.pruebas;
+package com.notariaberrospi.sgn.pruebas;
 
 import java.util.List;
 
@@ -6,10 +6,10 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.notariaberrospi.entity.Kaac;
-import com.notariaberrospi.entity.Tabla;
-import com.notariaberrospi.service.ActoService;
-import com.notariaberrospi.service.MaestroService;
+import com.notariaberrospi.sgn.entity.Kaac;
+import com.notariaberrospi.sgn.entity.Tabla;
+import com.notariaberrospi.sgn.service.ActoService;
+import com.notariaberrospi.sgn.service.MaestroService;
 
 public class Persona extends AbstractBaseUnitTest {
 
