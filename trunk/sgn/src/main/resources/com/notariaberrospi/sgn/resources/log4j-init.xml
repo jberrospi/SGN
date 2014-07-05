@@ -10,7 +10,7 @@
 		<property name="targetMethod" value="initLogging" />
 		<property name="arguments">
 			<list>
-				<value>classpath:com/notariaberrospi/sgn/resources/log4j.properties</value>
+				<value>classpath:com/notariaberrospi/sgn/resources/log4j.xml</value>
 			</list>
 		</property>
 	</bean>

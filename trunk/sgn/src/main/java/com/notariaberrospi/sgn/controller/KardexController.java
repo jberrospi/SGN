@@ -18,7 +18,7 @@ public class KardexController {
 	@Autowired
 	private ServiceFactory serviceFactory;
 		
-	private Kardex kardex = new Kardex();
+	private Kardex kardex;
 	
 	private Long acto;
 	
@@ -28,6 +28,7 @@ public class KardexController {
 
 	public KardexController() {
 		logger.debug("");
+		kardex = new Kardex();
 	}
 	
 	public void registrar() {
