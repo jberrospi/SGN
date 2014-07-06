@@ -8,6 +8,7 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.io.IOUtils;
 import org.apache.poi.hwpf.HWPFDocument;
 import org.apache.poi.hwpf.usermodel.Range;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
@@ -15,6 +16,8 @@ import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  * Clase utilitaria para Archivos.
@@ -24,9 +27,13 @@ import org.slf4j.LoggerFactory;
  *
  */
 
+@Component
 public class ArchivoUtil {
 	
-	private static final Logger logger = LoggerFactory.getLogger(ArchivoUtil.class);
+	private final Logger logger = LoggerFactory.getLogger(ArchivoUtil.class);
+	
+	@Autowired
+	Propiedades propiedades;
 
 	/**
 	 * Permite Generar un documento word formato docx desde una plantilla.
@@ -34,12 +41,12 @@ public class ArchivoUtil {
 	 * @param nombreDocumentoGenerado nombre del documento generado.
 	 * @param parametros parametros para reemplezar el contenido de la plantilla.
 	 * */
-	public static boolean generarDocxDesdePlantilla(String nombrePlantilla,
-									  				String nombreDocumentoGenerado, 
-									  				Map<String, String> parametros) {
+	public boolean generarDocxDesdePlantilla(String nombrePlantilla,
+									  		 String nombreDocumentoGenerado, 
+									  		 Map<String, String> parametros) {
 
-		String rutaPlantilla = "D:\\" + nombrePlantilla;
-		String rutaDocumentoGenerado = "D:\\" + nombreDocumentoGenerado;
+		String rutaPlantilla = propiedades.RUTA_WORD_PLANTILLA + nombrePlantilla;
+		String rutaDocumentoGenerado = propiedades.RUTA_WORD_GENERADO + nombreDocumentoGenerado;
 
 		OutputStream out = null;
 		boolean resultado = false;
@@ -64,20 +71,13 @@ public class ArchivoUtil {
 			out = new FileOutputStream(rutaDocumentoGenerado);
 			doc.write(out);
 			out.flush();
-
+			resultado = true;
 		} catch (FileNotFoundException e) {
 			logger.error("Archivo no encontrado", e);
 		} catch (IOException e) {
 			logger.error("Error en archivo", e);
 		} finally {
-			if (out != null)
-				try {
-					out.close();
-					resultado = true;
-					logger.debug("El archivo " + rutaDocumentoGenerado + " se genero correctamente");
-				} catch (IOException e) {
-					logger.error("Error al cerrar la escritura del archivo", e);
-				}
+			IOUtils.closeQuietly(out);
 		}
 		return resultado;
 	}
@@ -88,12 +88,12 @@ public class ArchivoUtil {
 	 * @param nombreDocumentoGenerado nombre del documento generado.
 	 * @param parametros parametros para reemplezar el contenido de la plantilla.
 	 * */
-	public static boolean generarDocDesdePlantilla(String nombrePlantilla, 
-												   String nombreDocumentoGenerado, 
-												   Map<String, String> parametros) {
+	public boolean generarDocDesdePlantilla(String nombrePlantilla, 
+											String nombreDocumentoGenerado, 
+											Map<String, String> parametros) {
 
-		String rutaPlantilla = "D:\\" + nombrePlantilla;
-		String rutaDocumentoGenerado = "D:\\" + nombreDocumentoGenerado;
+		String rutaPlantilla = propiedades.RUTA_WORD_PLANTILLA + nombrePlantilla;
+		String rutaDocumentoGenerado = propiedades.RUTA_WORD_GENERADO + nombreDocumentoGenerado;
 		
 		OutputStream out = null;
 		boolean resultado = false;
@@ -110,20 +110,13 @@ public class ArchivoUtil {
 			out = new FileOutputStream(rutaDocumentoGenerado);
 			doc.write(out);
 			out.flush();
-
+			resultado = true;
 		} catch (FileNotFoundException e) {
 			logger.error("Archivo no encontrado", e);
 		} catch (IOException e) {
 			logger.error("Error en archivo", e);
 		} finally {
-			if (out != null)
-				try {
-					out.close();
-					resultado = true;
-					logger.debug("El archivo " + rutaDocumentoGenerado + " se genero correctamente");
-				} catch (IOException e) {
-					logger.error("Error al cerrar la escritura del archivo", e);
-				}
+			IOUtils.closeQuietly(out);
 		}
 		return resultado;
 	}
