@@ -1,9 +1,21 @@
 package com.notariaberrospi.sgn.entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 
 /**
@@ -31,8 +43,11 @@ public class Persona implements Serializable {
 
 	private String estado;
 
-	private int estadocivil;
+	private Long estadocivil;
 
+	@Transient
+	private String nombreCompleto;
+	
     @Temporal( TemporalType.TIMESTAMP)
 	private Date feccrea;
 
@@ -42,9 +57,9 @@ public class Persona implements Serializable {
     @Temporal( TemporalType.TIMESTAMP)
 	private Date fecnac;
 
-	private int nacionalidad;
+	private Long nacionalidad;
 
-	private int ocupacion;
+	private Long ocupacion;
 
 	private String pc;
 
@@ -54,40 +69,16 @@ public class Persona implements Serializable {
 
 	private String segnom;
 
-	private int sexo;
+	private Long sexo;
 
 	private String usucrea;
 
 	private String usumodi;
 
-	//bi-directional many-to-one association to Abogado
-	@OneToMany(mappedBy="TPersona")
-	private List<Abogado> TAbogados;
-
-	//bi-directional many-to-one association to Empleado
-	@OneToMany(mappedBy="TPersona")
-	private List<Empleado> TEmpleados;
-
-	//bi-directional many-to-one association to Emrep
-	@OneToMany(mappedBy="TPersona")
-	private List<Emrep> TEmreps;
-
-	//bi-directional many-to-one association to Kape
-	@OneToMany(mappedBy="TPersona")
-	private List<Kape> TKapes;
-
-	//bi-directional many-to-one association to Perep
-	@OneToMany(mappedBy="TPersona")
-	private List<Perep> TPereps;
-
 	//bi-directional many-to-one association to Persona
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="CONYUGE")
 	private Persona TPersona;
-
-	//bi-directional many-to-one association to Persona
-	@OneToMany(mappedBy="TPersona")
-	private List<Persona> TPersonas;
 
     public Persona() {
     }
@@ -148,14 +139,6 @@ public class Persona implements Serializable {
 		this.estado = estado;
 	}
 
-	public int getEstadocivil() {
-		return this.estadocivil;
-	}
-
-	public void setEstadocivil(int estadocivil) {
-		this.estadocivil = estadocivil;
-	}
-
 	public Date getFeccrea() {
 		return this.feccrea;
 	}
@@ -178,22 +161,6 @@ public class Persona implements Serializable {
 
 	public void setFecnac(Date fecnac) {
 		this.fecnac = fecnac;
-	}
-
-	public int getNacionalidad() {
-		return this.nacionalidad;
-	}
-
-	public void setNacionalidad(int nacionalidad) {
-		this.nacionalidad = nacionalidad;
-	}
-
-	public int getOcupacion() {
-		return this.ocupacion;
-	}
-
-	public void setOcupacion(int ocupacion) {
-		this.ocupacion = ocupacion;
 	}
 
 	public String getPc() {
@@ -228,13 +195,6 @@ public class Persona implements Serializable {
 		this.segnom = segnom;
 	}
 
-	public int getSexo() {
-		return this.sexo;
-	}
-
-	public void setSexo(int sexo) {
-		this.sexo = sexo;
-	}
 
 	public String getUsucrea() {
 		return this.usucrea;
@@ -252,46 +212,7 @@ public class Persona implements Serializable {
 		this.usumodi = usumodi;
 	}
 
-	public List<Abogado> getTAbogados() {
-		return this.TAbogados;
-	}
 
-	public void setTAbogados(List<Abogado> TAbogados) {
-		this.TAbogados = TAbogados;
-	}
-	
-	public List<Empleado> getTEmpleados() {
-		return this.TEmpleados;
-	}
-
-	public void setTEmpleados(List<Empleado> TEmpleados) {
-		this.TEmpleados = TEmpleados;
-	}
-	
-	public List<Emrep> getTEmreps() {
-		return this.TEmreps;
-	}
-
-	public void setTEmreps(List<Emrep> TEmreps) {
-		this.TEmreps = TEmreps;
-	}
-	
-	public List<Kape> getTKapes() {
-		return this.TKapes;
-	}
-
-	public void setTKapes(List<Kape> TKapes) {
-		this.TKapes = TKapes;
-	}
-	
-	public List<Perep> getTPereps() {
-		return this.TPereps;
-	}
-
-	public void setTPereps(List<Perep> TPereps) {
-		this.TPereps = TPereps;
-	}
-	
 	public Persona getTPersona() {
 		return this.TPersona;
 	}
@@ -299,13 +220,45 @@ public class Persona implements Serializable {
 	public void setTPersona(Persona TPersona) {
 		this.TPersona = TPersona;
 	}
-	
-	public List<Persona> getTPersonas() {
-		return this.TPersonas;
+
+	public String getNombreCompleto() {
+		return nombreCompleto=prinom+" "+segnom+" "+apepat+" "+apemat ;
 	}
 
-	public void setTPersonas(List<Persona> TPersonas) {
-		this.TPersonas = TPersonas;
+	public void setNombreCompleto(String nombreCompleto) {
+		this.nombreCompleto = nombreCompleto;
 	}
+
+	public Long getEstadocivil() {
+		return estadocivil;
+	}
+
+	public void setEstadocivil(Long estadocivil) {
+		this.estadocivil = estadocivil;
+	}
+
+	public Long getNacionalidad() {
+		return nacionalidad;
+	}
+
+	public void setNacionalidad(Long nacionalidad) {
+		this.nacionalidad = nacionalidad;
+	}
+
+	public Long getOcupacion() {
+		return ocupacion;
+	}
+
+	public void setOcupacion(Long ocupacion) {
+		this.ocupacion = ocupacion;
+	}
+
+	public Long getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(Long sexo) {
+		this.sexo = sexo;
+	}	
 	
 }

@@ -23,7 +23,17 @@ public class Tabla implements Serializable {
 
 	private Long idgrupo;
 
-    public Tabla() {
+	private Long valor1;
+
+    public Long getValor1() {
+		return valor1;
+	}
+
+	public void setValor1(Long valor1) {
+		this.valor1 = valor1;
+	}
+
+	public Tabla() {
     }
 
 	public Long getId() {

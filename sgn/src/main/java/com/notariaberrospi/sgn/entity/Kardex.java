@@ -92,12 +92,12 @@ public class Kardex implements Serializable {
 	private List<Kape> TKapes;
 
 	//bi-directional many-to-one association to Abogado
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name="IDABOGADO")
 	private Abogado TAbogado;
 
 	//bi-directional many-to-one association to Empleado
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name="RESPONSABLE")
 	private Empleado TEmpleado1;
 

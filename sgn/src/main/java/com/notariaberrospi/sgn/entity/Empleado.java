@@ -29,19 +29,19 @@ public class Empleado implements Serializable {
 
 	private String pc;
 
-	private String rol;
+	private Long rol;
 
 	private String usucrea;
 
 	private String usumodi;
 
 	//bi-directional many-to-one association to Persona
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name="IDPERSONA")
 	private Persona TPersona;
 
 	//bi-directional many-to-one association to Usuario
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name="IDUSUARIO")
 	private Usuario TUsuario;
 
@@ -100,11 +100,11 @@ public class Empleado implements Serializable {
 		this.pc = pc;
 	}
 
-	public String getRol() {
+	public Long getRol() {
 		return this.rol;
 	}
 
-	public void setRol(String rol) {
+	public void setRol(Long rol) {
 		this.rol = rol;
 	}
 

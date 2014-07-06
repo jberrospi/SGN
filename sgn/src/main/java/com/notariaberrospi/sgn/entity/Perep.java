@@ -1,7 +1,9 @@
 package com.notariaberrospi.sgn.entity;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.util.Date;
 import java.util.List;
 
@@ -48,8 +50,14 @@ public class Perep implements Serializable {
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="IDPERSONA")
 	private Persona TPersona;
+	
+	//bi-directional many-to-one association to Persona
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="IDREPRESENTANTE")
+	private Persona Representante;
 
-    public Perep() {
+	
+	public Perep() {
     }
 
 	public Long getIdperep() {
@@ -146,6 +154,14 @@ public class Perep implements Serializable {
 
 	public void setTPersona(Persona TPersona) {
 		this.TPersona = TPersona;
+	}
+
+	public Persona getRepresentante() {
+		return Representante;
+	}
+
+	public void setRepresentante(Persona representante) {
+		Representante = representante;
 	}
 	
 }

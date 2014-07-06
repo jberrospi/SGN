@@ -20,10 +20,13 @@ public class MaestroService {
 	
 	public List<Tabla> buscarPorGrupo(long idGrupo){
 		logger.info("idGrupo: " + idGrupo);
-		return tablaDAO.buscar("from Tabla where idgrupo = ?", idGrupo);
+		return tablaDAO.buscarLista("from Tabla where idgrupo = ?", idGrupo);
 	}
 	
-	
+	public Tabla buscarAutoIncremental(long id){
+		logger.info("idG: " + id);
+		return tablaDAO.buscar("from Tabla where id= ?", id);
+	}
 	
 
 }

@@ -1,12 +1,16 @@
 package com.notariaberrospi.sgn.service;
 
+import java.io.Serializable;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.notariaberrospi.sgn.util.Propiedades;
 
 @Service
-public class ServiceFactory {
+public class ServiceFactory implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Autowired
 	private Propiedades properties;
@@ -25,6 +29,22 @@ public class ServiceFactory {
 
 	@Autowired
 	private ActoService actoService;
+	
+	@Autowired
+	private IntervinienteEmpresaService intervinienteEmpresaService;
+
+	
+	@Autowired
+	private IntervinientePersonaService intervinientePersonaService;
+
+	
+	@Autowired
+	private EmpleadoService empleadoService;
+
+	
+	@Autowired
+	private EmpresaService empresaService;
+	
 	
 	public Propiedades getProperties() {
 		return properties;
@@ -72,6 +92,40 @@ public class ServiceFactory {
 
 	public void setActoService(ActoService actoService) {
 		this.actoService = actoService;
+	}
+
+	public IntervinienteEmpresaService getIntervinienteEmpresaService() {
+		return intervinienteEmpresaService;
+	}
+
+	public void setIntervinienteEmpresaService(
+			IntervinienteEmpresaService intervinienteEmpresaService) {
+		this.intervinienteEmpresaService = intervinienteEmpresaService;
+	}
+
+	public IntervinientePersonaService getIntervinientePersonaService() {
+		return intervinientePersonaService;
+	}
+
+	public void setIntervinientePersonaService(
+			IntervinientePersonaService intervinientePersonaService) {
+		this.intervinientePersonaService = intervinientePersonaService;
+	}
+
+	public EmpleadoService getEmpleadoService() {
+		return empleadoService;
+	}
+
+	public void setEmpleadoService(EmpleadoService empleadoService) {
+		this.empleadoService = empleadoService;
+	}
+
+	public EmpresaService getEmpresaService() {
+		return empresaService;
+	}
+
+	public void setEmpresaService(EmpresaService empresaService) {
+		this.empresaService = empresaService;
 	}
 
 	

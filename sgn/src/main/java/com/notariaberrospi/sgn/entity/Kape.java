@@ -49,10 +49,7 @@ public class Kape implements Serializable {
 	@JoinColumn(name="IDPEREP")
 	private Perep TPerep;
 
-	//bi-directional many-to-one association to Persona
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="IDPERSONA")
-	private Persona TPersona;
+
 
     public Kape() {
     }
@@ -153,12 +150,6 @@ public class Kape implements Serializable {
 		this.TPerep = TPerep;
 	}
 	
-	public Persona getTPersona() {
-		return this.TPersona;
-	}
 
-	public void setTPersona(Persona TPersona) {
-		this.TPersona = TPersona;
-	}
 	
 }

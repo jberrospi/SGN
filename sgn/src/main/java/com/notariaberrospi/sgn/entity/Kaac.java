@@ -39,9 +39,6 @@ public class Kaac implements Serializable {
 
 	private String usumodi;
 
-	//bi-directional many-to-one association to Kardex
-	@OneToMany(mappedBy="TKaac")
-	private List<Kardex> TKardexs;
 
     public Kaac() {
     }
@@ -126,12 +123,5 @@ public class Kaac implements Serializable {
 		this.usumodi = usumodi;
 	}
 
-	public List<Kardex> getTKardexs() {
-		return this.TKardexs;
-	}
-
-	public void setTKardexs(List<Kardex> TKardexs) {
-		this.TKardexs = TKardexs;
-	}
 	
 }

@@ -13,10 +13,19 @@ public class TablaDAO {
 	
 	@Autowired
 	private HibernateBaseDao hibernateBaseDao;
+
 	
-	public List<Tabla> buscar(String query, Object... parametros){
+	public List<Tabla> buscarLista(String query, Object... parametros){
 		return hibernateBaseDao.buscarLista(query, parametros);
 	}
+	
+	public Tabla buscar(String query, Object... parametros){
+		return hibernateBaseDao.buscar(query, parametros);
+	}
+	
+	public void modificar(Tabla tabla){
 
+		hibernateBaseDao.modificar(tabla);
+	}
 	
 }
