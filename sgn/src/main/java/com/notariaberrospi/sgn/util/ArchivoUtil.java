@@ -59,6 +59,7 @@ public class ArchivoUtil {
 				List<XWPFRun> xwpfRuns = xwpfParagraph.getRuns();
 				for (XWPFRun xwpfRun : xwpfRuns) {
 					String xwpfRunText = xwpfRun.getText(xwpfRun.getTextPosition());
+					System.out.println(xwpfRunText);
 					for (Map.Entry<String, String> entry : parametros.entrySet()) {
 						if (xwpfRunText != null && xwpfRunText.contains(entry.getKey())) {
 							xwpfRunText = xwpfRunText.replace(entry.getKey(),entry.getValue());
@@ -102,7 +103,6 @@ public class ArchivoUtil {
 
 			HWPFDocument doc = new HWPFDocument(new FileInputStream(rutaPlantilla));
 			Range rango = doc.getRange();
-
 			for (Map.Entry<String, String> entry : parametros.entrySet()) {
 				rango.replaceText(entry.getKey(), entry.getValue());
 			}
