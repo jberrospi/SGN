@@ -39,25 +39,25 @@ public class TestGeneracionWord extends AbstractBaseUnitTest{
 		
 		parametros.put("[PODERDANTE_N_DNI]", "07262716");
 		parametros.put("[PODERNANTE_NACIONALIDAD]", "PERUANO");
-		parametros.put("[PODERDANDE_E_CIVIL_COMPLETO]", "CASADO CON JESSICA BERRIO JO");
+		parametros.put("[PODERDANTE_E_CIVIL_COMPLETO]", "CASADO CON JESSICA BERRIO JO");
 		parametros.put("[PODERDANTE_DIRECCION]", "AVENIDA MARISCAL CASTILLA 489, URBANIZACIÓN LAS MAGNOLIAS, DISTRITO DE SANTIAGO DE SURCO, PROVINCIA Y DEPARTAMENTO DE LIMA");
 		parametros.put("[PODERDANTE_PROFESION]", "ADMINISTRADOR");
-		parametros.put("[PODERDANDE_PROCEDENCIA]", "POR SU PROPIO DERECHO");
-		parametros.put("[PODERDANDE_ABOGADO_NOMBRE_COMPLETO]", "RUBEN P. BERNABE CHAVEZ");
+		parametros.put("[PODERDANTE_PROCEDENCIA]", "POR SU PROPIO DERECHO");
+		parametros.put("[PODERDANTE_ABOGADO_NOMBRE_COMPLETO]", "RUBEN P. BERNABE CHAVEZ");
 		parametros.put("[PODERDANTE_ABOGADO_REGIMEN]", "C.A.L.");
 		parametros.put("[PODERDANTE_ABOGADO_N_REGIMEN]", "56501");
 		
-		parametros.put("[DIA]", dia);
-		parametros.put("[MES]", mes);
-		parametros.put("[AÑO]", año);
+		//parametros.put("[DIA]", dia);
+		//parametros.put("[MES]", mes);
+		//parametros.put("[AÑO]", año);
 		
 		
 		boolean resultado = archivoUtil.generarDocDesdePlantilla("plantilla_escritura.doc", "escritura.doc", parametros);
 		System.out.println("generacion doc: " + resultado);
 		
-		resultado = archivoUtil.generarDocxDesdePlantilla("plantilla_escritura.docx", "escritura.docx", parametros);
+		//boolean resultado = archivoUtil.generarDocxDesdePlantilla("plantilla_escritura2.docx", "escritura.docx", parametros);
 		
-		System.out.println("generacion docx: " + resultado);
+		//System.out.println("generacion docx: " + resultado);
 	}
 
 }
