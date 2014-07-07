@@ -14,7 +14,7 @@ public class popupController {
 	
 	public void popupListaEmpresa() {
 		logger.info("popupListaEmpresa");
-        RequestContext.getCurrentInstance().openDialog("/paginas/modulos/principal/popupListaEmpresa");
+        RequestContext.getCurrentInstance().openDialog("popupListaEmpresa");
     }
 
 }

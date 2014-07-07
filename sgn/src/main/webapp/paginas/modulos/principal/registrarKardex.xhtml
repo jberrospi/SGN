@@ -12,7 +12,6 @@
 		<ui:define name="content">
 			<h2>Registrar Kardex</h2>
 
-
 			<h:form id="form1">
 				<h:inputHidden value="#{mantKardexController.kardex.idkardex}"></h:inputHidden>
 				<p:panel header="Datos Kardex">
@@ -101,7 +100,7 @@
 								itemValue="#{digitador.idempleado}" />
 						</p:selectOneMenu>
 						<p:message for="digitador" display="icon" />
-						
+
 						<p:outputLabel for="folioini"
 							value="#{mensaje['campo.kardex.folioIni']}" />
 						<p:inputText size="50" id="folioini"
@@ -157,9 +156,14 @@
 
 				<p:panel header="Datos Intervientes Empresa" collapsed="3">
 
-					<p:commandButton value="Buscar" icon="ui-icon-extlink"
-						actionListener="#{popupController.popupListaEmpresa}" />
-						
+			
+				<p:commandButton value="Buscar" immediate="true" icon="ui-icon-extlink"
+					actionListener="#{popupController.popupListaEmpresa}" />
+
+			
+
+
+
 					<p:dataTable var="empresa"
 						value="#{IntervinienteEmpresaController.intervinientes}">
 						<p:column headerText="Id">
