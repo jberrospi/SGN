@@ -19,17 +19,17 @@
 					<p:messages />
 
 
-					<p:dataTable var="car" value="#{dtBasicView.cars}">
+					<p:dataTable var="kardex" value="#{kardexController.cars}">
 						<p:column headerText="Id">
-							<h:outputText value="#{car.id}" />
+							<h:outputText value="#{kardex.id}" />
 						</p:column>
 
 						<p:column headerText="Year">
-							<h:outputText value="#{car.year}" />
+							<h:outputText value="#{kardex.numkardex}" />
 						</p:column>
 
 						<p:column headerText="Brand">
-							<h:outputText value="#{car.brand}" />
+							<h:outputText value="#{kardex.}" />
 						</p:column>
 
 						<p:column headerText="Color">

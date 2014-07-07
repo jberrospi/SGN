@@ -16,6 +16,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.notariaberrospi.sgn.entity.Kardex;
+import com.notariaberrospi.sgn.service.KardexService;
 import com.notariaberrospi.sgn.util.ArchivoUtil;
 import com.notariaberrospi.sgn.util.Propiedades;
 
@@ -24,6 +26,9 @@ import com.notariaberrospi.sgn.util.Propiedades;
 public class ArchivoController {
 	
 	private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
+	
+	@Autowired
+	private KardexService kardexService;
 	
 	@Autowired
 	private Propiedades propiedades;
@@ -62,20 +67,25 @@ public class ArchivoController {
 		parametros.put("[PODERDANDE_ABOGADO_NOMBRE_COMPLETO]", "RUBEN P. BERNABE CHAVEZ");
 		parametros.put("[PODERDANTE_ABOGADO_REGIMEN]", "C.A.L.");
 		parametros.put("[PODERDANTE_ABOGADO_N_REGIMEN]", "56501");
+
+		Kardex kardex = kardexService.buscar();
+		
+		parametros.put("[N_KARDEX]", kardex.getNrokardex());
+		parametros.put("[N_MINUTA]", kardex.getMinuta());
 		
 		
 		InputStream stream = null;
 		try {
 			
-			String nombrePlantilla = "plantilla_escritura.docx";
-			String nombreGenerado = "generado.docx";
+			String nombrePlantilla = "plantilla_escritura.doc";
+			String nombreGenerado = "generado.doc";
 			
-			boolean resultado = archivoUtil.generarDocxDesdePlantilla(nombrePlantilla, nombreGenerado, parametros);
+			boolean resultado = archivoUtil.generarDocDesdePlantilla(nombrePlantilla, nombreGenerado, parametros);
 			
 			if(resultado){
 				logger.info("Se genero correctamente el archivo");
 				stream = new FileInputStream(propiedades.RUTA_WORD_GENERADO + nombreGenerado);
-				file = new DefaultStreamedContent(stream, propiedades.MIME_TYPE_DOCX, nombreGenerado);
+				file = new DefaultStreamedContent(stream, propiedades.MIME_TYPE_DOC, nombreGenerado);
 				logger.info("Se transformo correctamente el archivo");
 			}
 

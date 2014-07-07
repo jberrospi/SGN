@@ -1,5 +1,9 @@
 package com.notariaberrospi.sgn.controller;
 
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +24,9 @@ public class PersonaController {
 
 	private Persona persona;
 	
+	private List<Persona> personas;
+	
+	
 	private String conyuge;
 
 	public PersonaController() {
@@ -28,6 +35,12 @@ public class PersonaController {
 
 	}
 
+	@PostConstruct
+	public void init(){
+		logger.info("");
+		personas= serviceFactory.getPersonaService().buscarPersonas(persona);
+	}
+	
 	public Persona getPersona() {
 		
 		return persona;
@@ -60,4 +73,13 @@ public class PersonaController {
 
 	}
 
+	public List<Persona> getPersonas() {
+		return personas;
+	}
+
+	public void setPersonas(List<Persona> personas) {
+		this.personas = personas;
+	}
+
+	
 }

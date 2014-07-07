@@ -3,12 +3,12 @@ package com.notariaberrospi.sgn.dao;
 
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.notariaberrospi.sgn.entity.Persona;
-import com.notariaberrospi.sgn.entity.Usuario;
 import com.notariaberrospi.sgn.util.HibernateBaseDao;
 
 @Repository
@@ -36,9 +36,11 @@ public class PersonaDAO {
 		hibernateBaseDao.eliminar(persona);
 	}
 	
-	public Usuario buscar(String query, Object... parametros){
+	public Persona buscar(String query, Object... parametros){
 		return hibernateBaseDao.buscar(query,parametros);
 	}
 
-	
+	public List<Persona> buscarLista(String query, Object... parametros){
+		return hibernateBaseDao.buscarLista(query,parametros);
+	}
 }

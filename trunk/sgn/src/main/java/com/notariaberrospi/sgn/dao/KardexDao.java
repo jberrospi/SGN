@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.notariaberrospi.sgn.entity.Kardex;
-import com.notariaberrospi.sgn.entity.Usuario;
 import com.notariaberrospi.sgn.util.HibernateBaseDao;
 
 @Repository
@@ -21,7 +20,7 @@ public class KardexDao {
 		fecha = new Date();
 		System.out.println (fecha);
 		kardex.setFeccrea(fecha);
-		hibernateBaseDao.grabar(kardex);
+		hibernateBaseDao.grabarOModificar(kardex);
 	}
 	
 	public void modificar(Kardex kardex){
@@ -34,8 +33,9 @@ public class KardexDao {
 		hibernateBaseDao.eliminar(kardex);
 	}
 	
-	public Usuario buscar(String query, Object... parametros){
-		return hibernateBaseDao.buscar(query,parametros);
+	public Kardex buscar(String query, Object... parametros){
+		Long id = hibernateBaseDao.buscar("select max(idkardex) from Kardex");
+		return hibernateBaseDao.buscar(query,id);
 	}
 
 	

@@ -9,21 +9,22 @@
 <h:body>
 	<ui:composition template="../../recursos/plantillaPopup.xhtml">
 		<ui:define name="content">
+
 			<h2></h2>
 			<h:form id="form2">
-				<p:panel header="Lista Empresa">
+				<p:panel header="Lista Persona">
 					<p:messages />
-					<p:dataTable var="empresa" value="#{empresaController.empresas}">
+					<p:dataTable var="persona" value="#{personaController.personas}">
 						<p:column headerText="Id">
-							<h:outputText value="#{empresa.idempresa}" />
+							<h:outputText value="#{persona.idpersona}" />
 						</p:column>
 
-						<p:column headerText="RUC">
-							<h:outputText value="#{empresa.ruc}" />
+						<p:column headerText="Doc. Identidad">
+							<h:outputText value="#{persona.docidentidad}" />
 						</p:column>
 
-						<p:column headerText="Razon Social">
-							<h:outputText value="#{empresa.razsocial}" />
+						<p:column headerText="Nombre Completo">
+							<h:outputText value="#{persona.nombreCompleto}" />
 						</p:column>
 					</p:dataTable>
 				</p:panel>

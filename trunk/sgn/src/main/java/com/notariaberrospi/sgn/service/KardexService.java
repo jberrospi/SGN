@@ -6,9 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.notariaberrospi.sgn.dao.KardexDao;
-import com.notariaberrospi.sgn.dao.PersonaDAO;
 import com.notariaberrospi.sgn.entity.Kardex;
-import com.notariaberrospi.sgn.entity.Persona;
 
 @Service
 public class KardexService {
@@ -27,5 +25,10 @@ public class KardexService {
 		logger.debug("");
 		kardexDao.modificar(kardex);
 		
+	}
+	
+	public Kardex buscar() {
+		logger.debug("");
+		return kardexDao.buscar("from Kardex where idKardex = ?");
 	}
 }
