@@ -9,6 +9,21 @@
 
 <h:body>
 	<ui:composition template="../../recursos/plantilla.xhtml">
+
+		<ui:define name="script">
+
+			<script type="text/javascript">
+				function start() {
+					PF('statusDialog').show();
+				}
+
+				function stop() {
+					PF('statusDialog').hide();
+				}
+			</script>
+
+		</ui:define>
+
 		<ui:define name="content">
 			<h2>Registrar Kardex</h2>
 
@@ -38,7 +53,9 @@
 
 
 						<p:outputLabel for="acto" value="#{mensaje['campo.acto.acto']}" />
-						<p:selectOneMenu id="acto" value="#{mantKardexController.acto}">
+						<p:selectOneMenu id="acto"
+							value="#{mantKardexController.kardex.TKaac.idkaac}"
+							required="true">
 							<f:selectItem itemLabel="Seleccionar" itemValue="" />
 							<f:selectItems value="#{actoController.actos}" var="acto"
 								itemLabel="#{acto.acto}" itemValue="#{acto.idkaac}" />
@@ -48,7 +65,8 @@
 						<p:outputLabel for="responsable"
 							value="#{mensaje['campo.kardex.responsable']}" />
 						<p:selectOneMenu id="responsable"
-							value="#{mantKardexController.kardex.TEmpleado1.idempleado}">
+							value="#{mantKardexController.kardex.TEmpleado1.idempleado}"
+							required="true">
 							<f:selectItem itemLabel="Seleccionar" itemValue="" />
 							<f:selectItems value="#{empleadoController.abogadosInternos}"
 								var="abogadoInterno"
@@ -67,9 +85,8 @@
 
 						<p:outputLabel for="fecescritura"
 							value="#{mensaje['campo.kardex.fecEscritura']}" />
-						<p:calendar id="fecescritura" pattern=" EEE MM/dd/yyyy HH:mm:ss"
-							value="#{mantKardexController.kardex.fecescritura}"
-							locale="es_ES" size="50" />
+						<p:calendar id="fecescritura" pattern="MM/dd/yyyy HH:mm:ss"
+							value="#{mantKardexController.kardex.fecescritura}" size="50" />
 						<p:message for="fecescritura" display="icon" />
 
 						<p:outputLabel for="escritura"
@@ -93,7 +110,8 @@
 						<p:outputLabel for="digitador"
 							value="#{mensaje['campo.kardex.digitador']}" />
 						<p:selectOneMenu id="digitador"
-							value="#{mantKardexController.kardex.TEmpleado2.idempleado}">
+							value="#{mantKardexController.kardex.TEmpleado2.idempleado}"
+							required="true">
 							<f:selectItem itemLabel="Seleccionar" itemValue="" />
 							<f:selectItems value="#{empleadoController.empleados}"
 								var="digitador" itemLabel="#{digitador.TPersona.nombreCompleto}"
@@ -123,7 +141,8 @@
 				</p:panel>
 
 
-				<p:panel header="Datos Abogado minuta" collapsed="3">
+				<p:panel header="Datos Abogado minuta" collapsed="3"
+					rendered="false">
 
 					<p:outputLabel for="idabogado"
 						value="#{mensaje['campo.kardex.idAbogado']}" />
@@ -156,16 +175,12 @@
 
 				<p:panel header="Datos Intervientes Empresa" collapsed="3">
 
-			
-				<p:commandButton value="Buscar" immediate="true" icon="ui-icon-extlink"
-					actionListener="#{popupController.popupListaEmpresa}" />
 
-			
-
-
-
+					<p:commandButton value="Buscar" immediate="true"
+						icon="ui-icon-extlink"
+						actionListener="#{popupController.popupListaEmpresa}" />
 					<p:dataTable var="empresa"
-						value="#{IntervinienteEmpresaController.intervinientes}">
+						value="#{intervinienteEmpresaController.intervinientes}">
 						<p:column headerText="Id">
 							<h:outputText value="#{empresa.idkaem}" />
 						</p:column>
@@ -185,24 +200,66 @@
 
 				</p:panel>
 
+				<p:panel header="Datos Intervientes Persona" collapsed="3">
 
-				<p:commandButton value="Re" update="form1"
+
+					<p:commandButton value="Buscar" immediate="true"
+						icon="ui-icon-extlink"
+						actionListener="#{popupController.popupListaPersona}" />
+					<p:dataTable var="persona"
+						value="#{intervinientePersonaController.intervinientes}">
+						<p:column headerText="Id">
+							<h:outputText value="#{persona.idkaem}" />
+						</p:column>
+
+						<p:column headerText="Condicion">
+							<h:outputText value="#{persona.condicion}" />
+						</p:column>
+
+						<p:column headerText="Nombre Completo">
+							<h:outputText value="#{persona.Perep.TPersona.nombreCompleto}" />
+						</p:column>
+
+						<p:column headerText="Fecha Firma">
+							<h:outputText value="#{persona.fecfirma}" />
+						</p:column>
+					</p:dataTable>
+
+				</p:panel>
+
+
+				<p:commandButton value="Registrar" update="form1"
 					actionListener="#{mantKardexController.registrar}"
 					validateClient="true" />
 				<p:commandButton value="Limpiar" type="reset" />
 				<p:spacer />
 
 			</h:form>
+			
+			<h:form id="form2">
+			
+			<p:dialog modal="true" widgetVar="statusDialog" header="Status"
+				draggable="false" closable="false" resizable="false">
+				<p:graphicImage name="/images/ajaxloadingbar.gif" />
+			</p:dialog>
+
+				<p:panel header="Descargar">
+					<p:messages />
+
+<!-- onclick="PrimeFaces.monitorDownload(start, stop);" -->
+					<p:commandButton value="Generar" ajax="false"
+						
+						
+						icon="ui-icon-arrowthick-1-s">
+						<p:fileDownload value="#{archivoController.file}" />
+					</p:commandButton>
+
+				</p:panel>
+
+			</h:form>
 
 		</ui:define>
 	</ui:composition>
-
-
-
-
-
-
-
 
 </h:body>
 </html>

@@ -1,5 +1,7 @@
 package com.notariaberrospi.sgn.service;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +32,23 @@ public class PersonaService {
 		logger.debug("");
 		personaDAO.eliminar(persona);
 	}
+
+	public List<Persona> buscarPersonas(Persona persona) {
+		logger.debug("");
+		String query="From Persona ";
+		
+		if (persona!=null) {
+			if (persona.getDocidentidad()!=null && persona.getPrinom()!=null) {
+				query="WHERE docidentidad="+persona.getDocidentidad()+" and prinom like %"+persona.getPrinom()+"%";
+			} else if (persona.getRuc()!=null){
+				query="WHERE docidentidad="+persona.getRuc();
+			}else if(persona.getPrinom()!=null){
+				query="WHERE prinom like %"+persona.getPrinom()+"%";
+			}
+			
+			
+		}
+		return personaDAO.buscarLista(query);	}
 
 	
 }

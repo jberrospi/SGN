@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 
 import com.notariaberrospi.sgn.entity.Abogado;
 import com.notariaberrospi.sgn.entity.Empleado;
+import com.notariaberrospi.sgn.entity.Kaac;
 import com.notariaberrospi.sgn.entity.Kardex;
 import com.notariaberrospi.sgn.entity.Persona;
 import com.notariaberrospi.sgn.entity.Tabla;
@@ -32,17 +33,14 @@ public class mantKardexController {
 
 	private Kardex kardex;
 
-	private Long acto;
-
-	private Persona digitador;
-
 	public mantKardexController() {
 		logger.debug("");
 		kardex = new Kardex();
 		kardex.setTEmpleado1(new Empleado());
-		kardex.setTAbogado(new Abogado());
+		kardex.setTKaac(new Kaac());
+		//kardex.setTAbogado(new Abogado());
 		kardex.setTEmpleado2(new Empleado());
-		kardex.setTEmpleado3(new Empleado());
+		//kardex.setTEmpleado3(new Empleado());
 
 		if (kardex.getIdkardex() != null) {
 
@@ -89,6 +87,7 @@ public class mantKardexController {
 		boolean indicador = false;
 		if (kardex.getIdkardex() != null) {
 			logger.debug("Registrar Persona");
+			kardex.setIdkardex(null);
 			serviceFactory.getKardexService().grabar(kardex);
 
 		} else {
@@ -105,20 +104,5 @@ public class mantKardexController {
 		this.kardex = kardex;
 	}
 
-	public Long getActo() {
-		return acto;
-	}
-
-	public void setActo(Long acto) {
-		this.acto = acto;
-	}
-
-	public Persona getDigitador() {
-		return digitador;
-	}
-
-	public void setDigitador(Persona digitador) {
-		this.digitador = digitador;
-	}
 
 }
