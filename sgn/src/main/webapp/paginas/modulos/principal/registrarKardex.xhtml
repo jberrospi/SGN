@@ -255,7 +255,7 @@
 
 					<!-- 				<p:panel header="Datos Intervientes Empresa" collapsed="3"> -->
 
-					<p:panelGrid>
+					<p:panelGrid >
 
 						<f:facet name="header">
 							<p:row>
@@ -272,10 +272,10 @@
 						</p:row>
 						<p:row>
 							<p:column>
-								<p:dataTable var="empresa"
+								<p:dataTable  id="intervinienteEmpresa"  var="empresa" 
 									value="#{intervinienteEmpresaController.intervinientes}">
-									<p:column headerText="Id">
-										<h:outputText value="#{empresa.idkaem}" />
+									<p:column headerText="Ruc" >
+										<h:outputText value="#{empresa.ruc}" />
 									</p:column>
 
 									<p:column headerText="Condicion">
@@ -289,6 +289,11 @@
 									<p:column headerText="Fecha Firma">
 										<h:outputText value="#{empresa.fecfirma}" />
 									</p:column>
+
+									<p:column headerText="Eliminar">									
+									 <p:commandButton actionListener="#{intervinienteEmpresaController.eliminarInterviniente('#{empresa.idkaem}')}" id="iconOnly" update="intervinienteEmpresa" icon="ui-icon-disk" title="Icon Only" />
+									</p:column>
+ 
 								</p:dataTable>
 							</p:column>
 						</p:row>
@@ -317,7 +322,7 @@
 						
 						<p:row>
 							<p:column>
-						<p:dataTable var="persona"
+						<p:dataTable id="intervinientePersona" var="persona"
 							value="#{intervinientePersonaController.intervinientes}">
 							<p:column headerText="Id">
 								<h:outputText value="#{persona.idkaem}" />

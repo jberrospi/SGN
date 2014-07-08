@@ -25,6 +25,10 @@
 						<p:column headerText="Razon Social">
 							<h:outputText value="#{empresa.razsocial}" />
 						</p:column>
+						
+						<p:column headerText="Representantes">
+							<p:commandButton actionListener="#{intervinienteEmpresaController.eliminarInterviniente(empresa.idempresa)}" id="iconOnly" icon="ui-icon-disk" title="Icon Only" />
+						</p:column>									
 					</p:dataTable>
 				</p:panel>
 			</h:form>
