@@ -25,63 +25,101 @@
 		</ui:define>
 
 		<ui:define name="content">
-			<h2>Registrar Kardex</h2>
+			<p:panel header="Registrar Kardex">
 
-			<h:form id="form1">
-				<h:inputHidden value="#{mantKardexController.kardex.idkardex}"></h:inputHidden>
-				<p:panel header="Datos Kardex">
+				<h:form id="form1">
+					<h:inputHidden value="#{mantKardexController.kardex.idkardex}"></h:inputHidden>
+					<!-- 				<p:panel header="Datos Kardex"> -->
 
-					<!-- 					<p:messages /> -->
-					<p:outputLabel for="nrokardex"
-						value="#{mensaje['campo.kardex.nroKardex']}" />
-					<p:inputText size="50" id="nrokardex"
-						value="#{mantKardexController.kardex.nrokardex}" required="true"
-						label="Nro. Kardex" disabled="true">
-					</p:inputText>
-					<p:message for="nrokardex" display="icon" />
+					<p:panelGrid style="boder:0px;">
+						<f:facet name="header">
+							<p:row>
+								<p:column colspan="3">Datos Kardex</p:column>
+							</p:row>
+						</f:facet>
+						<p:row>
+							<p:column>
+								<p:outputLabel for="nrokardex"
+									value="#{mensaje['campo.kardex.nroKardex']}" />
+							</p:column>
+							<p:column colspan="2">
+								<p:inputText size="50" id="nrokardex"
+									value="#{mantKardexController.kardex.nrokardex}"
+									required="true" label="Nro. Kardex" disabled="true">
+								</p:inputText>
+							</p:column>
+						</p:row>
 
-					<p:panelGrid columns="3" style="boder:0px;">
+						<p:row>
+							<p:column>
+								<p:outputLabel for="fecingreso"
+									value="#{mensaje['campo.kardex.fecIngreso']}" />
+							</p:column>
+							<p:column>
+								<p:inputText size="50" id="fecingreso" disabled="true"
+									value="#{mantKardexController.kardex.fecingreso}"
+									required="false" label="Fecha Ingreso">
+									<f:convertDateTime pattern="EEE MM/dd/yyyy HH:mm:ss" />
+								</p:inputText>
+							</p:column>
+							<p:column>
+								<p:message for="fecingreso" display="icon" />
+							</p:column>
+						</p:row>
 
-						<p:outputLabel for="fecingreso"
-							value="#{mensaje['campo.kardex.fecIngreso']}" />
-						<p:inputText size="50" id="fecingreso" disabled="true"
-							value="#{mantKardexController.kardex.fecingreso}"
-							required="false" label="Fecha Ingreso">
-							<f:convertDateTime pattern="EEE MM/dd/yyyy HH:mm:ss" />
-						</p:inputText>
-						<p:message for="fecingreso" display="icon" />
+						<p:row>
+							<p:column>
+								<p:outputLabel for="acto" value="#{mensaje['campo.acto.acto']}" />
+							</p:column>
+							<p:column>
+								<p:selectOneMenu id="acto" style="width:284px;"
+									value="#{mantKardexController.kardex.TKaac.idkaac}"
+									required="true">
+									<f:selectItem itemLabel="Seleccionar" itemValue="" />
+									<f:selectItems value="#{actoController.actos}" var="acto"
+										itemLabel="#{acto.acto}" itemValue="#{acto.idkaac}" />
+								</p:selectOneMenu>
+							</p:column>
+							<p:column>
+								<p:message for="acto" display="icon" />
+							</p:column>
+						</p:row>
 
-
-						<p:outputLabel for="acto" value="#{mensaje['campo.acto.acto']}" />
-						<p:selectOneMenu id="acto"
-							value="#{mantKardexController.kardex.TKaac.idkaac}"
-							required="true">
-							<f:selectItem itemLabel="Seleccionar" itemValue="" />
-							<f:selectItems value="#{actoController.actos}" var="acto"
-								itemLabel="#{acto.acto}" itemValue="#{acto.idkaac}" />
-						</p:selectOneMenu>
-						<p:message for="acto" display="icon" />
-
-						<p:outputLabel for="responsable"
-							value="#{mensaje['campo.kardex.responsable']}" />
-						<p:selectOneMenu id="responsable"
-							value="#{mantKardexController.kardex.TEmpleado1.idempleado}"
-							required="true">
-							<f:selectItem itemLabel="Seleccionar" itemValue="" />
-							<f:selectItems value="#{empleadoController.abogadosInternos}"
-								var="abogadoInterno"
-								itemLabel="#{abogadoInterno.TPersona.nombreCompleto}"
-								itemValue="#{abogadoInterno.idempleado}" />
-						</p:selectOneMenu>
-						<p:message for="responsable" display="icon" />
+						<p:row>
+							<p:column>
+								<p:outputLabel for="responsable"
+									value="#{mensaje['campo.kardex.responsable']}" />
+							</p:column>
+							<p:column>
+								<p:selectOneMenu id="responsable" style="width:284px;"
+									value="#{mantKardexController.kardex.TEmpleado1.idempleado}"
+									required="true">
+									<f:selectItem itemLabel="Seleccionar" itemValue="" />
+									<f:selectItems value="#{empleadoController.abogadosInternos}"
+										var="abogadoInterno"
+										itemLabel="#{abogadoInterno.TPersona.nombreCompleto}"
+										itemValue="#{abogadoInterno.idempleado}" />
+								</p:selectOneMenu>
+							</p:column>
+							<p:column>
+								<p:message for="responsable" display="icon" />
+							</p:column>
+						</p:row>
 
 					</p:panelGrid>
 
-				</p:panel>
+					<!-- 				</p:panel> -->
 
+					<p:spacer height="5" />
 
-				<p:panel header="Datos Escritura" rendered="true" collapsed="3">
+					<!-- 				<p:panel header="Datos Escritura" rendered="true" collapsed="3"> -->
 					<p:panelGrid columns="3" style="boder:0px;">
+
+						<f:facet name="header">
+							<p:row>
+								<p:column colspan="3">Datos Escritura</p:column>
+							</p:row>
+						</f:facet>
 
 						<p:outputLabel for="fecescritura"
 							value="#{mensaje['campo.kardex.fecEscritura']}" />
@@ -109,7 +147,7 @@
 
 						<p:outputLabel for="digitador"
 							value="#{mensaje['campo.kardex.digitador']}" />
-						<p:selectOneMenu id="digitador"
+						<p:selectOneMenu id="digitador" style="width:284px;"
 							value="#{mantKardexController.kardex.TEmpleado2.idempleado}"
 							required="true">
 							<f:selectItem itemLabel="Seleccionar" itemValue="" />
@@ -138,118 +176,196 @@
 						<p:message for="registro" display="icon" />
 
 					</p:panelGrid>
-				</p:panel>
+					<!-- 				</p:panel> -->
 
+					<p:spacer height="5" />
 
-				<p:panel header="Datos Abogado minuta" collapsed="3"
-					rendered="false">
+					<!-- 					<p:panel header="Datos Abogado minuta" collapsed="3" -->
+					<!-- 						rendered="true"> -->
 
-					<p:outputLabel for="idabogado"
-						value="#{mensaje['campo.kardex.idAbogado']}" />
-					<p:inputText id="idabogado" size="100"
-						value="#{mantKardexController.kardex.TAbogado.idabogado}"
-						required="true" label="Abogado">
-						<f:validateLength minimum="4" maximum="50" />
-					</p:inputText>
-					<p:message for="idabogado" display="icon" />
+					<p:panelGrid style="boder:0px;" rendered="false" >
+						<f:facet name="header">
+							<p:row>
+								<p:column colspan="3">Datos Abogado minuta</p:column>
+							</p:row>
+						</f:facet>
+						<p:row>
+							<p:column>
 
-					<p:panelGrid columns="6" style="boder:0px;">
-						<p:outputLabel for="colegiatura"
-							value="#{mensaje['campo.abogado.colegiatura']}" />
-						<p:inputText size="50" id="colegiatura"
-							value="#{mantKardexController.kardex.TAbogado.colegiatura}"
-							required="true" label="Colegiatura">
-							<f:validateLength maximum="10" />
-						</p:inputText>
-						<p:message for="colegiatura" display="icon" />
+								<p:outputLabel for="idabogado"
+									value="#{mensaje['campo.kardex.idAbogado']}" />
+							</p:column>
 
-						<p:outputLabel for="zona" value="#{mensaje['campo.abogado.zona']}" />
-						<p:inputText size="50" id="zona" disabled="true"
-							value="#{mantKardexController.kardex.TAbogado.zona}" label="zona">
-						</p:inputText>
-						<p:message for="zona" display="icon" />
+							<p:column>
+								<p:inputText id="idabogado" size="100"
+									value="#{mantKardexController.kardex.TAbogado.idabogado}"
+									required="true" label="Abogado">
+									<f:validateLength minimum="4" maximum="50" />
+								</p:inputText>
+							</p:column>
+
+							<p:column>
+								<p:message for="idabogado" display="icon" />
+							</p:column>
+						</p:row>
+
+						<p:row>
+							<p:column>
+								<p:outputLabel for="colegiatura"
+									value="#{mensaje['campo.abogado.colegiatura']}" />
+							</p:column>
+
+							<p:column>
+								<p:inputText size="50" id="colegiatura"
+									value="#{mantKardexController.kardex.TAbogado.colegiatura}"
+									required="true" label="Colegiatura">
+									<f:validateLength maximum="10" />
+								</p:inputText>
+							</p:column>
+
+							<p:column>
+								<p:message for="colegiatura" display="icon" />
+							</p:column>
+						</p:row>
+
+						<p:row>
+							<p:column>
+
+								<p:outputLabel for="zona"
+									value="#{mensaje['campo.abogado.zona']}" />
+							</p:column>
+
+							<p:column>
+								<p:inputText size="50" id="zona" disabled="true"
+									value="#{mantKardexController.kardex.TAbogado.zona}"
+									label="zona">
+								</p:inputText>
+							</p:column>
+
+							<p:column>
+								<p:message for="zona" display="icon" />
+
+							</p:column>
+						</p:row>
 
 					</p:panelGrid>
-				</p:panel>
+					<!-- 					</p:panel> -->
 
+					<p:spacer height="5" />
 
-				<p:panel header="Datos Intervientes Empresa" collapsed="3">
+					<!-- 				<p:panel header="Datos Intervientes Empresa" collapsed="3"> -->
 
+					<p:panelGrid>
 
-					<p:commandButton value="Buscar" immediate="true"
-						icon="ui-icon-extlink"
-						actionListener="#{popupController.popupListaEmpresa}" />
-					<p:dataTable var="empresa"
-						value="#{intervinienteEmpresaController.intervinientes}">
-						<p:column headerText="Id">
-							<h:outputText value="#{empresa.idkaem}" />
+						<f:facet name="header">
+							<p:row>
+								<p:column colspan="1">Datos Intervientes Empresa</p:column>
+							</p:row>
+						</f:facet>
+
+						<p:row>
+							<p:column>
+								<p:commandButton value="Buscar" immediate="true"
+									icon="ui-icon-extlink"
+									actionListener="#{popupController.popupListaEmpresa}" />
+							</p:column>
+						</p:row>
+						<p:row>
+							<p:column>
+								<p:dataTable var="empresa"
+									value="#{intervinienteEmpresaController.intervinientes}">
+									<p:column headerText="Id">
+										<h:outputText value="#{empresa.idkaem}" />
+									</p:column>
+
+									<p:column headerText="Condicion">
+										<h:outputText value="#{empresa.condicion}" />
+									</p:column>
+
+									<p:column headerText="Raz. Social">
+										<h:outputText value="#{empresa.tEmrep.tempresa.razonSocial}" />
+									</p:column>
+
+									<p:column headerText="Fecha Firma">
+										<h:outputText value="#{empresa.fecfirma}" />
+									</p:column>
+								</p:dataTable>
+							</p:column>
+						</p:row>
+					</p:panelGrid>
+
+					<!-- 				</p:panel> -->
+
+					<p:spacer height="5" />
+
+<!-- 					<p:panel header="Datos Intervientes Persona" collapsed="3"> -->
+<p:panelGrid>
+						<f:facet name="header">
+							<p:row>
+								<p:column colspan="1">Datos Intervientes Empresa</p:column>
+							</p:row>
+						</f:facet>
+
+						<p:row>
+							<p:column>
+						<p:commandButton value="Buscar" immediate="true"
+							icon="ui-icon-extlink"
+							actionListener="#{popupController.popupListaPersona}" />
+						
 						</p:column>
+						</p:row>
+						
+						<p:row>
+							<p:column>
+						<p:dataTable var="persona"
+							value="#{intervinientePersonaController.intervinientes}">
+							<p:column headerText="Id">
+								<h:outputText value="#{persona.idkaem}" />
+							</p:column>
 
-						<p:column headerText="Condicion">
-							<h:outputText value="#{empresa.condicion}" />
+							<p:column headerText="Condicion">
+								<h:outputText value="#{persona.condicion}" />
+							</p:column>
+
+							<p:column headerText="Nombre Completo">
+								<h:outputText value="#{persona.Perep.TPersona.nombreCompleto}" />
+							</p:column>
+
+							<p:column headerText="Fecha Firma">
+								<h:outputText value="#{persona.fecfirma}" />
+							</p:column>
+						</p:dataTable>
 						</p:column>
+						</p:row>
+						
+						</p:panelGrid>
+<!-- 					</p:panel> -->
 
-						<p:column headerText="Raz. Social">
-							<h:outputText value="#{empresa.tEmrep.tempresa.razonSocial}" />
-						</p:column>
+					<p:spacer height="10" />
+					<p:panelGrid columns="2" >
+					<p:commandButton value="Registrar" update="form1"
+						actionListener="#{mantKardexController.registrar}"
+						validateClient="true" />
+					<p:commandButton value="Limpiar" type="reset" />
+					</p:panelGrid>
+				</h:form>
 
-						<p:column headerText="Fecha Firma">
-							<h:outputText value="#{empresa.fecfirma}" />
-						</p:column>
-					</p:dataTable>
+			</p:panel>
 
-				</p:panel>
+			<p:spacer height="5" />
 
-				<p:panel header="Datos Intervientes Persona" collapsed="3">
-
-
-					<p:commandButton value="Buscar" immediate="true"
-						icon="ui-icon-extlink"
-						actionListener="#{popupController.popupListaPersona}" />
-					<p:dataTable var="persona"
-						value="#{intervinientePersonaController.intervinientes}">
-						<p:column headerText="Id">
-							<h:outputText value="#{persona.idkaem}" />
-						</p:column>
-
-						<p:column headerText="Condicion">
-							<h:outputText value="#{persona.condicion}" />
-						</p:column>
-
-						<p:column headerText="Nombre Completo">
-							<h:outputText value="#{persona.Perep.TPersona.nombreCompleto}" />
-						</p:column>
-
-						<p:column headerText="Fecha Firma">
-							<h:outputText value="#{persona.fecfirma}" />
-						</p:column>
-					</p:dataTable>
-
-				</p:panel>
-
-
-				<p:commandButton value="Registrar" update="form1"
-					actionListener="#{mantKardexController.registrar}"
-					validateClient="true" />
-				<p:commandButton value="Limpiar" type="reset" />
-				<p:spacer />
-
-			</h:form>
-			
 			<h:form id="form2">
-			
-			<p:dialog modal="true" widgetVar="statusDialog" header="Status"
-				draggable="false" closable="false" resizable="false">
-				<p:graphicImage name="/images/ajaxloadingbar.gif" />
-			</p:dialog>
+
+				<p:dialog modal="true" widgetVar="statusDialog" header="Status"
+					draggable="false" closable="false" resizable="false">
+					<p:graphicImage name="/images/ajaxloadingbar.gif" />
+				</p:dialog>
 
 				<p:panel header="Descargar">
 					<p:messages />
 
-<!-- onclick="PrimeFaces.monitorDownload(start, stop);" -->
+					<!-- onclick="PrimeFaces.monitorDownload(start, stop);" -->
 					<p:commandButton value="Generar" ajax="false"
-						
-						
 						icon="ui-icon-arrowthick-1-s">
 						<p:fileDownload value="#{archivoController.file}" />
 					</p:commandButton>
