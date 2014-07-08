@@ -47,6 +47,11 @@ public class IntervinienteEmpresaController implements Serializable {
 		logger.info("");
 	}
 
+	public void eliminarInterviniente(Long i){
+		System.out.println("MANDEEE"+i);
+	}
+
+	
 	public List<DetKaem> getIntervinientes() {
 		return intervinientes;
 	}
