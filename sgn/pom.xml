@@ -8,6 +8,11 @@
 	<name>Sistema de Gestion de Notaria</name>
 	<description>Sistema que ayudara en la gestion de la Notaria Berrospi Polo</description>
 
+	<organization>
+		<url>http://www.notariaberrospi.com/</url>
+		<name>Notaria Berrospi Polo</name>
+	</organization>
+
 
 	<!-- <repositories> -->
 	<!-- <repository> -->
@@ -20,8 +25,8 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.6</java.version>
-		<spring.version>4.0.3.RELEASE</spring.version>
-		<jsf.version>2.2.6</jsf.version>
+		<spring.version>4.0.5.RELEASE</spring.version>
+		<jsf.version>2.2.7</jsf.version>
 		<primefaces.version>5.0</primefaces.version>
 		<hibernate.version>4.3.5.Final</hibernate.version>
 		<mysql.version>5.1.30</mysql.version>
@@ -65,25 +70,24 @@
 
 		<!-- LO VAMOS A ACTIVAR CUANDO AGREGEMOS SPRING SECURITY PORQUE EXISTEN 
 			PROBLEMAS EXTRAÑOS EN EL CLASSPATH, ESTA SOLUCION ES BRINDADA POR SPRING -->
-		<!-- <dependency> -->
-		<!-- <groupId>org.springframework</groupId> -->
-		<!-- <artifactId>spring-framework-bom</artifactId> -->
-		<!-- <version>${spring.version}</version> -->
-		<!-- <type>pom</type> -->
-		<!-- <scope>import</scope> -->
-		<!-- </dependency> -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-framework-bom</artifactId>
+			<version>${spring.version}</version>
+			<type>pom</type>
+			<scope>import</scope>
+		</dependency>
 
-		<!-- <dependency> -->
-		<!-- <groupId>org.springframework.security</groupId> -->
-		<!-- <artifactId>spring-security-web</artifactId> -->
-		<!-- <version>${spring.security.version}</version> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>org.springframework.security</groupId> -->
-		<!-- <artifactId>spring-security-config</artifactId> -->
-		<!-- <version>${spring.security.version}</version> -->
-		<!-- </dependency> -->
-
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${spring.security.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${spring.security.version}</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.aspectj</groupId>
@@ -226,5 +230,4 @@
 
 		</plugins>
 	</build>
-
 </project>
