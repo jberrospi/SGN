@@ -12,7 +12,7 @@
 	<ui:insert name="script" />
 </h:head>
 <h:body>
-<!-- <f:view transient="true" > -->
+	<!-- <f:view transient="true" > -->
 	<div id="page">
 		<div id="header">
 			<h:form>
@@ -66,11 +66,22 @@
 		</div>
 
 		<div id="content">
+			<p:spacer height="5" />
 			<ui:insert name="content">
 			</ui:insert>
 		</div>
 
 	</div>
-<!-- </f:view> -->
+
+<!-- 	<h:form> -->
+<!-- 	<p:confirmDialog header="Vista expirada!!!" -->
+<!-- 		visible="#{not empty param['expired']}" -->
+<!-- 		message="La vista ha expirado." severity="alert" -->
+<!-- 		widgetVar="confirmDlg" modal="true"> -->
+<!-- 		<p:commandButton type="button" value="Aceptar" -->
+<!-- 			onclick="confirmDlg.hide()" /> -->
+<!-- 	</p:confirmDialog> -->
+<!-- 	</h:form> -->
+	<!-- </f:view> -->
 </h:body>
 </html>
