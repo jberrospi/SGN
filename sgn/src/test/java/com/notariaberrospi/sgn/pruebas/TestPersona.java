@@ -96,9 +96,16 @@ public class TestPersona extends AbstractBaseUnitTest {
 
 	}
 	
-	@Test
+	//@Test
 	public void obtenerKardex() throws Exception {
 		Kardex kardex = kardexService.buscar();
 		System.out.println(kardex);
 	}
+	
+	@Test
+		public void listaKardex() throws Exception {
+
+			List<Kardex> kardex = kardexService.buscarLista(null);
+			System.out.println(kardex.size());
+		}
 }
