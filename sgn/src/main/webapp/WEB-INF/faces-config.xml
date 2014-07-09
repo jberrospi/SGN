@@ -23,7 +23,7 @@
 	</application>
 
 	<factory>
-		<exception-handler-factory>com.notariaberrospi.sgn.handler.ShowCaseExceptionHandlerFactory</exception-handler-factory>
+		<exception-handler-factory>com.notariaberrospi.sgn.handler.ViewExceptionHandlerFactory</exception-handler-factory>
 	</factory>
 
 </faces-config>
