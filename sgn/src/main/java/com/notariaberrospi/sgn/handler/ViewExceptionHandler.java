@@ -37,7 +37,7 @@ public class ViewExceptionHandler extends ExceptionHandlerWrapper {
             ExceptionQueuedEventContext eqec = event.getContext();
             
             if(eqec.getException() instanceof ViewExpiredException) {
-            	logger.info("Vista Expirada: " + eqec.getException().getMessage());
+            	logger.error("Vista Expirada: " + eqec.getException().getMessage());
                 FacesContext context = eqec.getContext();
                 NavigationHandler navHandler = context.getApplication().getNavigationHandler();
  
@@ -49,7 +49,7 @@ public class ViewExceptionHandler extends ExceptionHandlerWrapper {
                     it.remove();
                 }
             }else{
-            	logger.info("Se Produjo un error: " + eqec.getException().getMessage());
+            	logger.error("Se Produjo un error: " + eqec.getException().getMessage());
             }
         }
         this.wrapped.handle();
