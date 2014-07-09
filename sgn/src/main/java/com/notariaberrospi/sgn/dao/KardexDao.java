@@ -1,6 +1,7 @@
 package com.notariaberrospi.sgn.dao;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -33,10 +34,17 @@ public class KardexDao {
 		hibernateBaseDao.eliminar(kardex);
 	}
 	
-	public Kardex buscar(String query, Object... parametros){
+	public Kardex buscarUltimoRegistrado(String query, Object... parametros){
 		Long id = hibernateBaseDao.buscar("select max(idkardex) from Kardex");
 		return hibernateBaseDao.buscar(query,id);
 	}
 
-	
+	public Kardex buscar(String query, Object... parametros){
+
+		return hibernateBaseDao.buscar(query,parametros);
+	}
+
+	public List<Kardex> buscarLista(String query) {
+		return hibernateBaseDao.buscarLista(query);
+	}
 }

@@ -1,6 +1,7 @@
 package com.notariaberrospi.sgn.controller;
 
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
 
@@ -12,11 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import com.notariaberrospi.sgn.entity.Abogado;
 import com.notariaberrospi.sgn.entity.Empleado;
 import com.notariaberrospi.sgn.entity.Kaac;
 import com.notariaberrospi.sgn.entity.Kardex;
-import com.notariaberrospi.sgn.entity.Persona;
 import com.notariaberrospi.sgn.entity.Tabla;
 import com.notariaberrospi.sgn.service.ServiceFactory;
 import com.notariaberrospi.sgn.util.Constantes;
@@ -33,6 +32,7 @@ public class mantKardexController {
 
 	private Kardex kardex;
 
+	
 	public mantKardexController() {
 		logger.debug("");
 		kardex = new Kardex();
@@ -42,6 +42,8 @@ public class mantKardexController {
 		kardex.setTEmpleado2(new Empleado());
 		//kardex.setTEmpleado3(new Empleado());
 
+
+		
 		if (kardex.getIdkardex() != null) {
 
 		} else {
@@ -77,10 +79,7 @@ public class mantKardexController {
 		Calendar calendar = Calendar.getInstance(tz1, local);
 		kardex.setFecingreso(calendar.getInstance().getTime());
 		
-		//Abogodaos internos
-		
-		
-		
+		//Abogodaos internos						
 	}
 
 	public void registrar() {
@@ -96,6 +95,11 @@ public class mantKardexController {
 		}
 	}
 
+	public String cargar(Long idKardex){
+		
+		kardex =serviceFactory.getKardexService().buscarPorId(idKardex);
+		return "/paginas/modulos/principal/registrarKardex";
+	}
 	public Kardex getKardex() {
 		return kardex;
 	}
