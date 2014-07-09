@@ -13,9 +13,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.notariaberrospi.sgn.entity.DetKaem;
-import com.notariaberrospi.sgn.entity.Tabla;
 import com.notariaberrospi.sgn.service.ServiceFactory;
-import com.notariaberrospi.sgn.util.Constantes;
 
 @Controller
 @Scope("session")
