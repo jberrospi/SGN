@@ -19,21 +19,25 @@
 					<p:messages />
 
 
-					<p:dataTable var="kardex" value="#{kardexController.cars}">
+					<p:dataTable var="kardex" value="#{listaKardexController.kardexs}">
 						<p:column headerText="Id">
-							<h:outputText value="#{kardex.id}" />
+							<h:outputText value="#{kardex.idkardex}" />
 						</p:column>
 
-						<p:column headerText="Year">
-							<h:outputText value="#{kardex.numkardex}" />
+						<p:column headerText="Numero kardex">
+							<h:outputText value="#{kardex.nrokardex}" />
 						</p:column>
 
-						<p:column headerText="Brand">
-							<h:outputText value="#{kardex.}" />
+						<p:column headerText="fecha Ingreso">
+							<h:outputText value="#{kardex.fecingreso}">
+								<f:convertDateTime pattern="EEE MM/dd/yyyy HH:mm:ss" />
+							 </h:outputText>
 						</p:column>
 
-						<p:column headerText="Color">
-							<h:outputText value="#{car.color}" />
+						<p:column headerText="Opcion">
+							<p:commandButton
+								action="#{mantKardexController.cargar(kardex.idkardex)}"
+								id="iconOnly" icon="ui-icon-disk" title="Icon Only" />
 						</p:column>
 					</p:dataTable>
 				</p:panel>
