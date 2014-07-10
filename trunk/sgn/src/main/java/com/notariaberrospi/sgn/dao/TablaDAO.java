@@ -28,4 +28,9 @@ public class TablaDAO {
 		hibernateBaseDao.modificar(tabla);
 	}
 	
+	public String buscarString(String query){
+		return hibernateBaseDao.buscar(query);
+	}
+	
+	
 }

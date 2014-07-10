@@ -44,10 +44,12 @@ public class TestPersona extends AbstractBaseUnitTest {
 		Assert.assertNotNull(tabla);
 	}
 
-	// @Test
+	@Test
 	public void autoIncremental1() throws Exception {
 
-		Tabla tabla = maestroService.buscarAutoIncremental(66);
+		Long tabla = maestroService.buscarAutoIncremental(Constantes.autoIncremental.ID_KARDEX).getValor1();
+		System.out.println(tabla);
+		
 		Assert.assertNotNull(tabla);
 	}
 

@@ -40,8 +40,24 @@ public class mantKardexController implements Serializable {
 		logger.info("");
 		
 		if(kardex == null){
-			logger.info("Registro");
+			logger.info("Cargar Registro");
 			kardex = new Kardex();
+			// obtener auto incremental kardex
+			Tabla autoKardex = serviceFactory.getTablaService()
+					.buscarAutoIncremental(Constantes.autoIncremental.ID_KARDEX);
+
+			// obtener auto incremental escritura
+			Tabla autoEscritura = serviceFactory.getTablaService()
+					.buscarAutoIncremental(Constantes.autoIncremental.ID_ESCRITURA);
+
+			// obtener auto incremental minuta
+			Tabla autoMinuta = serviceFactory.getTablaService()
+					.buscarAutoIncremental(Constantes.autoIncremental.ID_MINUTA);
+
+			// Seteo los valores auto incrementales
+			kardex.setNrokardex(autoKardex.getValor1() + "");
+			kardex.setEscritura(autoEscritura.getValor1() + "");
+			kardex.setMinuta(autoMinuta.getValor1() + "");
 		}
 		else{
 			logger.info("Modificacion id= " + kardex.getIdkardex());
@@ -53,22 +69,6 @@ public class mantKardexController implements Serializable {
 		kardex.setTEmpleado2(new Empleado());
 		//kardex.setTEmpleado3(new Empleado());
 
-		// obtener auto incremental kardex
-		Tabla autoKardex = serviceFactory.getTablaService()
-				.buscarAutoIncremental(Constantes.autoIncremental.ID_KARDEX);
-
-		// obtener auto incremental escritura
-		Tabla autoEscritura = serviceFactory.getTablaService()
-				.buscarAutoIncremental(Constantes.autoIncremental.ID_ESCRITURA);
-
-		// obtener auto incremental minuta
-		Tabla autoMinuta = serviceFactory.getTablaService()
-				.buscarAutoIncremental(Constantes.autoIncremental.ID_MINUTA);
-
-		// Seteo los valores auto incrementales
-		kardex.setNrokardex(autoKardex.getValor1() + "");
-		kardex.setEscritura(autoEscritura.getValor1() + "");
-		kardex.setMinuta(autoMinuta.getValor1() + "");
 
 		// Obtener fecha del sistema
 		Locale local = new Locale("es", "PE");
@@ -80,8 +80,8 @@ public class mantKardexController implements Serializable {
 
 	public String registrar() {
 
-		if (kardex.getIdkardex() != null) {
-			logger.debug("Registrar Persona");
+		if (kardex.getIdkardex() == null || kardex.getIdkardex()==0) {
+			logger.debug("Registrar Kardex");
 			kardex.setIdkardex(null);
 			serviceFactory.getKardexService().grabar(kardex);
 			FacesUtils.keepMessages();
@@ -92,8 +92,8 @@ public class mantKardexController implements Serializable {
 			FacesUtils.keepMessages();
 			FacesUtils.addMessageInfo("Se modifico correctamente");
 		}
-
-		return this.cargar(kardex.getIdkardex());
+			kardex=null;
+		return irPaginaController.listaKardex();
 	}
 
 	public String cargar(Long idKardex){

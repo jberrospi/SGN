@@ -21,7 +21,7 @@ public class TestGeneracionWord extends AbstractBaseUnitTest{
 		String dia = String.valueOf(Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
 		String temp = FechaUtil.obtenerNombreMes(Calendar.getInstance().get(Calendar.MONTH));
 		String mes = temp.substring(0, 1).toUpperCase().concat(temp.substring(1, temp.length()));
-		String año = String.valueOf(Calendar.getInstance().get(Calendar.YEAR));
+		String ano = String.valueOf(Calendar.getInstance().get(Calendar.YEAR));
 		
 		Map<String, String> parametros = new HashMap<String, String>();
 		
