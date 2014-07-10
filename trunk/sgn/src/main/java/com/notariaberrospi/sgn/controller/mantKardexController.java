@@ -1,11 +1,9 @@
 package com.notariaberrospi.sgn.controller;
 
+import java.io.Serializable;
 import java.util.Calendar;
-import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
-
-import javax.annotation.PostConstruct;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,42 +17,41 @@ import com.notariaberrospi.sgn.entity.Kardex;
 import com.notariaberrospi.sgn.entity.Tabla;
 import com.notariaberrospi.sgn.service.ServiceFactory;
 import com.notariaberrospi.sgn.util.Constantes;
+import com.notariaberrospi.sgn.util.FacesUtils;
 
 @Controller
-@Scope("request")
-public class mantKardexController {
+@Scope("session")
+public class mantKardexController implements Serializable {
 
-	private final Logger logger = LoggerFactory.getLogger(this.getClass()
-			.getName());
+	private static final long serialVersionUID = 1L;
+
+	private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
 	@Autowired
 	private ServiceFactory serviceFactory;
+	
+	@Autowired
+	private IrPaginaController irPaginaController;
 
 	private Kardex kardex;
 
-	
-	public mantKardexController() {
-		logger.debug("");
-		kardex = new Kardex();
+	//@PostConstruct
+	public void init() {
+		logger.info("");
+		
+		if(kardex == null){
+			logger.info("Registro");
+			kardex = new Kardex();
+		}
+		else{
+			logger.info("Modificacion id= " + kardex.getIdkardex());
+		}
+		
 		kardex.setTEmpleado1(new Empleado());
 		kardex.setTKaac(new Kaac());
 		//kardex.setTAbogado(new Abogado());
 		kardex.setTEmpleado2(new Empleado());
 		//kardex.setTEmpleado3(new Empleado());
-
-
-		
-		if (kardex.getIdkardex() != null) {
-
-		} else {
-
-		}
-
-	}
-
-	@PostConstruct
-	public void init() {
-		logger.info("");
 
 		// obtener auto incremental kardex
 		Tabla autoKardex = serviceFactory.getTablaService()
@@ -78,28 +75,33 @@ public class mantKardexController {
 		TimeZone tz1 = TimeZone.getTimeZone("UTC");
 		Calendar calendar = Calendar.getInstance(tz1, local);
 		kardex.setFecingreso(calendar.getInstance().getTime());
-		
-		//Abogodaos internos						
+					
 	}
 
-	public void registrar() {
-		boolean indicador = false;
+	public String registrar() {
+
 		if (kardex.getIdkardex() != null) {
 			logger.debug("Registrar Persona");
 			kardex.setIdkardex(null);
 			serviceFactory.getKardexService().grabar(kardex);
-
+			FacesUtils.keepMessages();
+			FacesUtils.addMessageInfo("Se registro correctamente");
 		} else {
 			logger.debug("Modificar Kardex");
 			serviceFactory.getKardexService().modificar(kardex);
+			FacesUtils.keepMessages();
+			FacesUtils.addMessageInfo("Se modifico correctamente");
 		}
+
+		return this.cargar(kardex.getIdkardex());
 	}
 
 	public String cargar(Long idKardex){
-		
-		kardex =serviceFactory.getKardexService().buscarPorId(idKardex);
-		return "/paginas/modulos/principal/registrarKardex";
+		logger.debug("idKardex = " + idKardex);
+		kardex = serviceFactory.getKardexService().buscarPorId(idKardex);
+		return irPaginaController.mantKardex();
 	}
+	
 	public Kardex getKardex() {
 		return kardex;
 	}

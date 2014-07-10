@@ -10,5 +10,7 @@
 </h:head>
 <h:body>
 	<h3>Error viewExpired</h3>
+	Message: #{pfExceptionHandler.message}
+	<h:outputText value="#{pfExceptionHandler.formattedStackTrace}" escape="false" />
 </h:body>
 </html>

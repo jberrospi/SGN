@@ -25,14 +25,12 @@ public class PersonaController {
 	private Persona persona;
 	
 	private List<Persona> personas;
-	
-	
+
 	private String conyuge;
 
 	public PersonaController() {
 		logger.debug("");
 		persona = new Persona();
-
 	}
 
 	@PostConstruct

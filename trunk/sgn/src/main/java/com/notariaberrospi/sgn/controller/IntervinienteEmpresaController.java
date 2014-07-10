@@ -30,10 +30,6 @@ public class IntervinienteEmpresaController implements Serializable {
 	
 	private DetKaem interviniente = new DetKaem();
 	
-	public IntervinienteEmpresaController() {
-		logger.debug("");
-	}
-	
 	@PostConstruct
 	public void init(){
 		logger.info("");

@@ -135,7 +135,7 @@
 
 	<error-page>
 		<exception-type>javax.faces.application.ViewExpiredException</exception-type>
-		<location>/paginas/error/viewExpired.jsf</location>
+		<location>/paginas/modulos/principal/registrarKardex.jsf?expired=true</location>
 	</error-page>
 
 	<error-page>
