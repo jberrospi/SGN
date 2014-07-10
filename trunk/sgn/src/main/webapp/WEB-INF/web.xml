@@ -8,11 +8,11 @@
 
 	<welcome-file-list>
 		<!-- <welcome-file>paginas/modulos/seguridad/login.jsf</welcome-file> -->
-		<welcome-file>paginas/modulos/principal/registrarKardex.jsf</welcome-file>
+		<welcome-file>paginas/modulos/principal/mantKardex.jsf</welcome-file>
 	</welcome-file-list>
 
 	<session-config>
-		<session-timeout>1</session-timeout>
+		<session-timeout>30</session-timeout>
 	</session-config>
 
 	<!-- <context-param> -->
@@ -135,7 +135,7 @@
 
 	<error-page>
 		<exception-type>javax.faces.application.ViewExpiredException</exception-type>
-		<location>/paginas/modulos/principal/registrarKardex.jsf?expired=true</location>
+		<location>/paginas/modulos/principal/listaKardex.jsf?expired=true</location>
 	</error-page>
 
 	<error-page>

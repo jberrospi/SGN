@@ -10,16 +10,14 @@
 	<ui:composition template="../../recursos/plantilla.xhtml">
 		<ui:define name="content">
 			<h:form id="form1">
-			
-			<p:commandButton value="Registrar" 
-			                 action="#{irPaginaController.mantKardex}" 
-			                 id="editar" 
-			                 icon="ui-icon-pencil" 
-			                 title="Registrar" />
+
+				<p:commandButton value="Registrar"
+					action="#{irPaginaController.mantKardex}" id="editar"
+					icon="ui-icon-pencil" title="Registrar" />
 
 				<p:panel header="Lista Kardex">
 					<p:messages />
-					
+
 					<p:dataTable var="kardex" value="#{listaKardexController.kardexs}">
 						<p:column headerText="Id">
 							<h:outputText value="#{kardex.idkardex}" />
@@ -35,13 +33,23 @@
 							</h:outputText>
 						</p:column>
 
-						<p:column headerText="Opcion" width="60" style="width:4%; text-align:center;" >
+						<p:column headerText="Opcion" width="60"
+							style="width:4%; text-align:center;">
 							<p:commandButton
 								action="#{mantKardexController.cargar(kardex.idkardex)}"
 								id="editar" icon="ui-icon-pencil" title="Editar" />
 						</p:column>
 					</p:dataTable>
 				</p:panel>
+			</h:form>
+			<h:form>
+				<p:confirmDialog header="Vista expirada"
+					visible="#{not empty param['expired']}"
+					message="La vista ha expirado" severity="alert"
+					widgetVar="dlgViewExpired" modal="true" closeOnEscape="true">
+					<p:commandButton value="Aceptar" type="button"
+						onclick="PF('dlgViewExpired').hide()" />
+				</p:confirmDialog>
 			</h:form>
 		</ui:define>
 	</ui:composition>
