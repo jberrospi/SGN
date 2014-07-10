@@ -27,11 +27,12 @@
 			<f:event type="preRenderView" listener="#{mantKardexController.init}" />
 			
 			<p:growl />
-			<p:panel header="Registrar Kardex">
+			
+			<p:panel  header="Registrar Kardex">
 
 				<h:form id="form1">
-					<h:inputHidden value="#{mantKardexController.kardex.idkardex}"></h:inputHidden>
-
+					<h:inputHidden value="#{mantKardexController.kardex.idkardex}" id="id_kardex"></h:inputHidden>
+	
 					<p:panelGrid style="boder:0px;">
 						<f:facet name="header">
 							<p:row>
@@ -125,19 +126,19 @@
 							value="#{mantKardexController.kardex.fecescritura}" size="50" />
 						<p:message for="fecescritura" display="icon" />
 
-						<p:outputLabel for="escritura"
+						<p:outputLabel for="escritura" 
 							value="#{mensaje['campo.kardex.escritura']}" />
-						<p:inputText size="50" id="escritura"
+						<p:inputText size="50" id="escritura" disabled="true"
 							value="#{mantKardexController.kardex.escritura}" required="true"
 							label="Escritura">
 							<f:validateLength maximum="10" />
 						</p:inputText>
 						<p:message for="escritura" display="icon" />
 
-						<p:outputLabel for="minuta"
+						<p:outputLabel for="minuta" 
 							value="#{mensaje['campo.kardex.minuta']}" />
-						<p:inputText size="50" id="minuta"
-							value="#{mantKardexController.kardex.minuta}" required="true"
+						<p:inputText size="50" id="minuta" disabled="true" 
+							value="#{mantKardexController.kardex.minuta}" required="false"
 							label="Minuta">
 							<f:validateLength maximum="10" />
 						</p:inputText>
@@ -177,7 +178,7 @@
 
 					<p:spacer height="5" />
 
-					<p:panelGrid style="boder:0px;" rendered="false">
+					<p:panelGrid style="boder:0px;" rendered="#{mantKardexController.kardex.idkardex != null and mantKardexController.kardex.idkardex > 0 }">
 						<f:facet name="header">
 							<p:row>
 								<p:column colspan="3">Datos Abogado minuta</p:column>

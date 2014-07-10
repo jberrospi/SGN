@@ -44,7 +44,6 @@ public class IntervinienteEmpresaController implements Serializable {
 	public void eliminarInterviniente(Long i){
 		System.out.println("MANDEEE"+i);
 	}
-
 	
 	public List<DetKaem> getIntervinientes() {
 		return intervinientes;
@@ -61,8 +60,4 @@ public class IntervinienteEmpresaController implements Serializable {
 	public void setInterviniente(DetKaem interviniente) {
 		this.interviniente = interviniente;
 	}
-
-
-	
-	
 }
