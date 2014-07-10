@@ -19,7 +19,7 @@ public class IrPaginaController implements Serializable {
 	}
 	
 	public String mantKardex() {
-		return "/paginas/modulos/principal/registrarKardex" + Constantes.REDIRECT_JSF;
+		return "/paginas/modulos/principal/mantKardex" + Constantes.REDIRECT_JSF;
 	}
 	
 
