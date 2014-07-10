@@ -21,7 +21,7 @@ public class TestGeneracionWord extends AbstractBaseUnitTest{
 		String dia = String.valueOf(Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
 		String temp = FechaUtil.obtenerNombreMes(Calendar.getInstance().get(Calendar.MONTH));
 		String mes = temp.substring(0, 1).toUpperCase().concat(temp.substring(1, temp.length()));
-		String año = String.valueOf(Calendar.getInstance().get(Calendar.YEAR));
+		String aÃ±o = String.valueOf(Calendar.getInstance().get(Calendar.YEAR));
 		
 		Map<String, String> parametros = new HashMap<String, String>();
 		
@@ -30,17 +30,17 @@ public class TestGeneracionWord extends AbstractBaseUnitTest{
 		parametros.put("[N_MINUTA]", "371");
 		parametros.put("[TIPO_PODER]", "PODER_ESPECIAL");
 		
-		parametros.put("[PODERDANTE_NOMBRE_COMPLETO]",	"EDUARDO ANTONIO DALLA PORTA ZÚÑIGA");
-		parametros.put("[APODERADO_NOMBRE_COMPLETO]", "ANA CECILIA ALBAÑIL CIEZA");
+		parametros.put("[PODERDANTE_NOMBRE_COMPLETO]",	"EDUARDO ANTONIO DALLA PORTA Zï¿½ï¿½IGA");
+		parametros.put("[APODERADO_NOMBRE_COMPLETO]", "ANA CECILIA ALBAï¿½IL CIEZA");
 		
 		parametros.put("[DIA_TEXTO]", "DOCE (12)");
 		parametros.put("[MES_TEXTO]", "FEBRERO");
-		parametros.put("[AÑO_TEXTO]", "DOS MIL CATORCE (2014)");
+		parametros.put("[Aï¿½O_TEXTO]", "DOS MIL CATORCE (2014)");
 		
 		parametros.put("[PODERDANTE_N_DNI]", "07262716");
 		parametros.put("[PODERNANTE_NACIONALIDAD]", "PERUANO");
 		parametros.put("[PODERDANTE_E_CIVIL_COMPLETO]", "CASADO CON JESSICA BERRIO JO");
-		parametros.put("[PODERDANTE_DIRECCION]", "AVENIDA MARISCAL CASTILLA 489, URBANIZACIÓN LAS MAGNOLIAS, DISTRITO DE SANTIAGO DE SURCO, PROVINCIA Y DEPARTAMENTO DE LIMA");
+		parametros.put("[PODERDANTE_DIRECCION]", "AVENIDA MARISCAL CASTILLA 489, URBANIZACIï¿½N LAS MAGNOLIAS, DISTRITO DE SANTIAGO DE SURCO, PROVINCIA Y DEPARTAMENTO DE LIMA");
 		parametros.put("[PODERDANTE_PROFESION]", "ADMINISTRADOR");
 		parametros.put("[PODERDANTE_PROCEDENCIA]", "POR SU PROPIO DERECHO");
 		parametros.put("[PODERDANTE_ABOGADO_NOMBRE_COMPLETO]", "RUBEN P. BERNABE CHAVEZ");
@@ -49,15 +49,15 @@ public class TestGeneracionWord extends AbstractBaseUnitTest{
 		
 		//parametros.put("[DIA]", dia);
 		//parametros.put("[MES]", mes);
-		//parametros.put("[AÑO]", año);
+		//parametros.put("[Aï¿½O]", aï¿½o);
 		
 		
-		boolean resultado = archivoUtil.generarDocDesdePlantilla("plantilla_escritura.doc", "escritura.doc", parametros);
-		System.out.println("generacion doc: " + resultado);
+		//boolean resultado = archivoUtil.generarDocDesdePlantilla("plantilla_escritura.doc", "escritura.doc", parametros);
+		//System.out.println("generacion doc: " + resultado);
 		
-		//boolean resultado = archivoUtil.generarDocxDesdePlantilla("plantilla_escritura2.docx", "escritura.docx", parametros);
+		boolean resultado = archivoUtil.generarDocxDesdePlantilla("plantilla_escritura.docx", "escritura.docx", parametros);
 		
-		//System.out.println("generacion docx: " + resultado);
+		System.out.println("generacion docx: " + resultado);
 	}
 
 }
