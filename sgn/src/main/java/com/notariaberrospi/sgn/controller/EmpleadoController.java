@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,22 +31,12 @@ public class EmpleadoController implements Serializable {
 	private List<Empleado> abogadosInternos;
 	
 	private Empleado empleado = new Empleado();
-	
-	public EmpleadoController() {
-		logger.debug("");
-	}
-	
+
 	@PostConstruct
 	public void init(){
 		logger.info("");
 		abogadosInternos= serviceFactory.getEmpleadoService().buscarEmpleadoRol(Constantes.rolEmpleado.ID_ABOGADO);
 		empleados= serviceFactory.getEmpleadoService().buscarLista();
-
-	}
-	
-	@PreDestroy
-	public void destroy(){
-		logger.info("");
 	}
 
 	public List<Empleado> getEmpleados() {

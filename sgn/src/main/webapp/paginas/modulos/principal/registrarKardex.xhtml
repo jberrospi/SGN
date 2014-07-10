@@ -9,7 +9,6 @@
 
 <h:body>
 	<ui:composition template="../../recursos/plantilla.xhtml">
-
 		<ui:define name="script">
 
 			<script type="text/javascript">
@@ -25,11 +24,13 @@
 		</ui:define>
 
 		<ui:define name="content">
+			<f:event type="preRenderView" listener="#{mantKardexController.init}" />
+			
+			<p:growl />
 			<p:panel header="Registrar Kardex">
 
 				<h:form id="form1">
 					<h:inputHidden value="#{mantKardexController.kardex.idkardex}"></h:inputHidden>
-					<!-- 				<p:panel header="Datos Kardex"> -->
 
 					<p:panelGrid style="boder:0px;">
 						<f:facet name="header">
@@ -108,11 +109,8 @@
 
 					</p:panelGrid>
 
-					<!-- 				</p:panel> -->
-
 					<p:spacer height="5" />
 
-					<!-- 				<p:panel header="Datos Escritura" rendered="true" collapsed="3"> -->
 					<p:panelGrid columns="3" style="boder:0px;">
 
 						<f:facet name="header">
@@ -176,14 +174,10 @@
 						<p:message for="registro" display="icon" />
 
 					</p:panelGrid>
-					<!-- 				</p:panel> -->
 
 					<p:spacer height="5" />
 
-					<!-- 					<p:panel header="Datos Abogado minuta" collapsed="3" -->
-					<!-- 						rendered="true"> -->
-
-					<p:panelGrid style="boder:0px;" rendered="false" >
+					<p:panelGrid style="boder:0px;" rendered="false">
 						<f:facet name="header">
 							<p:row>
 								<p:column colspan="3">Datos Abogado minuta</p:column>
@@ -249,13 +243,10 @@
 						</p:row>
 
 					</p:panelGrid>
-					<!-- 					</p:panel> -->
 
 					<p:spacer height="5" />
 
-					<!-- 				<p:panel header="Datos Intervientes Empresa" collapsed="3"> -->
-
-					<p:panelGrid >
+					<p:panelGrid>
 
 						<f:facet name="header">
 							<p:row>
@@ -272,9 +263,9 @@
 						</p:row>
 						<p:row>
 							<p:column>
-								<p:dataTable  id="intervinienteEmpresa"  var="empresa" 
+								<p:dataTable id="intervinienteEmpresa" var="empresa"
 									value="#{intervinienteEmpresaController.intervinientes}">
-									<p:column headerText="Ruc" >
+									<p:column headerText="Ruc">
 										<h:outputText value="#{empresa.ruc}" />
 									</p:column>
 
@@ -290,21 +281,21 @@
 										<h:outputText value="#{empresa.fecfirma}" />
 									</p:column>
 
-									<p:column headerText="Eliminar">									
-									 <p:commandButton actionListener="#{intervinienteEmpresaController.eliminarInterviniente('#{empresa.idkaem}')}" id="iconOnly" update="intervinienteEmpresa" icon="ui-icon-disk" title="Icon Only" />
+									<p:column headerText="Eliminar">
+										<p:commandButton
+											actionListener="#{intervinienteEmpresaController.eliminarInterviniente('#{empresa.idkaem}')}"
+											id="iconOnly" update="intervinienteEmpresa"
+											icon="ui-icon-disk" title="Icon Only" />
 									</p:column>
- 
+
 								</p:dataTable>
 							</p:column>
 						</p:row>
 					</p:panelGrid>
 
-					<!-- 				</p:panel> -->
-
 					<p:spacer height="5" />
 
-<!-- 					<p:panel header="Datos Intervientes Persona" collapsed="3"> -->
-<p:panelGrid>
+					<p:panelGrid>
 						<f:facet name="header">
 							<p:row>
 								<p:column colspan="1">Datos Intervientes Empresa</p:column>
@@ -313,45 +304,46 @@
 
 						<p:row>
 							<p:column>
-						<p:commandButton value="Buscar" immediate="true"
-							icon="ui-icon-extlink"
-							actionListener="#{popupController.popupListaPersona}" />
-						
-						</p:column>
+								<p:commandButton value="Buscar" immediate="true"
+									icon="ui-icon-extlink"
+									actionListener="#{popupController.popupListaPersona}" />
+
+							</p:column>
 						</p:row>
-						
+
 						<p:row>
 							<p:column>
-						<p:dataTable id="intervinientePersona" var="persona"
-							value="#{intervinientePersonaController.intervinientes}">
-							<p:column headerText="Id">
-								<h:outputText value="#{persona.idkaem}" />
-							</p:column>
+								<p:dataTable id="intervinientePersona" var="persona"
+									value="#{intervinientePersonaController.intervinientes}">
+									<p:column headerText="Id">
+										<h:outputText value="#{persona.idkaem}" />
+									</p:column>
 
-							<p:column headerText="Condicion">
-								<h:outputText value="#{persona.condicion}" />
-							</p:column>
+									<p:column headerText="Condicion">
+										<h:outputText value="#{persona.condicion}" />
+									</p:column>
 
-							<p:column headerText="Nombre Completo">
-								<h:outputText value="#{persona.Perep.TPersona.nombreCompleto}" />
-							</p:column>
+									<p:column headerText="Nombre Completo">
+										<h:outputText value="#{persona.Perep.TPersona.nombreCompleto}" />
+									</p:column>
 
-							<p:column headerText="Fecha Firma">
-								<h:outputText value="#{persona.fecfirma}" />
+									<p:column headerText="Fecha Firma">
+										<h:outputText value="#{persona.fecfirma}" />
+									</p:column>
+								</p:dataTable>
 							</p:column>
-						</p:dataTable>
-						</p:column>
 						</p:row>
-						
-						</p:panelGrid>
-<!-- 					</p:panel> -->
+
+					</p:panelGrid>
 
 					<p:spacer height="10" />
-					<p:panelGrid columns="2" >
-					<p:commandButton value="Registrar" update="form1"
-						actionListener="#{mantKardexController.registrar}"
-						validateClient="true" />
-					<p:commandButton value="Limpiar" type="reset" />
+					<p:panelGrid columns="3">
+						<p:commandButton value="Registrar" update="form1"
+							action="#{mantKardexController.registrar}"
+							validateClient="true" />
+						<p:commandButton value="Limpiar" type="reset" />
+						<p:commandButton value="Cancelar"
+							action="#{irPaginaController.listaKardex}" immediate="true" />
 					</p:panelGrid>
 				</h:form>
 
@@ -367,7 +359,6 @@
 				</p:dialog>
 
 				<p:panel header="Descargar">
-					<p:messages />
 
 					<!-- onclick="PrimeFaces.monitorDownload(start, stop);" -->
 					<p:commandButton value="Generar" ajax="false"

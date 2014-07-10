@@ -73,15 +73,17 @@
 
 	</div>
 
-<!-- 	<h:form> -->
-<!-- 	<p:confirmDialog header="Vista expirada!!!" -->
-<!-- 		visible="#{not empty param['expired']}" -->
-<!-- 		message="La vista ha expirado." severity="alert" -->
-<!-- 		widgetVar="confirmDlg" modal="true"> -->
-<!-- 		<p:commandButton type="button" value="Aceptar" -->
-<!-- 			onclick="confirmDlg.hide()" /> -->
-<!-- 	</p:confirmDialog> -->
-<!-- 	</h:form> -->
+	<h:form>
+		<p:confirmDialog header="Vista expirada"
+		                 visible="#{not empty param['expired']}"
+						 message="La vista ha expirado" 
+						 severity="alert"
+						 widgetVar="dlgViewExpired" 
+						 modal="true"
+						 closeOnEscape="true">
+			<p:commandButton value="Aceptar" type="button" onclick="PF('dlgViewExpired').hide()" />
+		</p:confirmDialog>
+	</h:form>
 	<!-- </f:view> -->
 </h:body>
 </html>

@@ -35,29 +35,30 @@ public class KardexService {
 	}
 
 	public Kardex buscarPorId(Long idKardex) {
-
+		logger.debug("");
 		return kardexDao.buscar("from Kardex where idKardex = ?",idKardex);	
 	}
 	
 	public List<Kardex> buscarLista(Kardex kardex){
 		logger.debug("");
-		String query="From Kardex ";
+		String query = "From Kardex ";
 		
 		if (kardex!=null) {
-			if (kardex.getIdkardex()!=null && kardex.getFecingreso()!=null && kardex.getFeccierre()!=null) {
-				query="WHERE idkardex="+kardex.getIdkardex()+" and fecingreso beetwen "+kardex.getFecingreso()+" and "+kardex.getFeccierre();
-			} else if (kardex.getIdkardex()!=null && kardex.getFecingreso()!=null){
-				query="WHERE idkardex="+kardex.getIdkardex()+" and fecingreso ="+kardex.getFecingreso();
-			}else if(kardex.getFecingreso()!=null && kardex.getFeccierre()!=null){
-				query="WHERE fecingreso ="+kardex.getFecingreso()+" and "+kardex.getFeccierre();
-			}else if (kardex.getIdkardex()!=null && kardex.getFecingreso()!=null){
-				query="WHERE idkardex="+kardex.getIdkardex()+" and fecingreso ="+kardex.getFecingreso();
 			
+			if (kardex.getIdkardex() != null && kardex.getFecingreso() != null && kardex.getFeccierre() != null)
+				query = "WHERE idkardex = " + kardex.getIdkardex() 
+				                            + " and fecingreso beetwen " + kardex.getFecingreso() + " and "+kardex.getFeccierre();
+			 
+			else if (kardex.getIdkardex() != null && kardex.getFecingreso() != null)
+				query = "WHERE idkardex = " + kardex.getIdkardex() + " and fecingreso = " + kardex.getFecingreso();
 			
+			else if(kardex.getFecingreso() != null && kardex.getFeccierre() != null)
+				query = "WHERE fecingreso beetwen " + kardex.getFecingreso() + " and " + kardex.getFeccierre();
+			
+			else if (kardex.getIdkardex() != null && kardex.getFecingreso() != null)
+				query = "WHERE idkardex = " + kardex.getIdkardex() + " and fecingreso =" + kardex.getFecingreso();
 		}
 		
-
-		}
 		return kardexDao.buscarLista(query);
 	}
 }

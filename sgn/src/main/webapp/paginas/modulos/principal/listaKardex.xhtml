@@ -6,19 +6,20 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-
 <h:body>
 	<ui:composition template="../../recursos/plantilla.xhtml">
 		<ui:define name="content">
-			<h2></h2>
-
 			<h:form id="form1">
+			
+			<p:commandButton value="Registrar" 
+			                 action="#{irPaginaController.mantKardex}" 
+			                 id="editar" 
+			                 icon="ui-icon-pencil" 
+			                 title="Registrar" />
 
 				<p:panel header="Lista Kardex">
-
 					<p:messages />
-
-
+					
 					<p:dataTable var="kardex" value="#{listaKardexController.kardexs}">
 						<p:column headerText="Id">
 							<h:outputText value="#{kardex.idkardex}" />
@@ -30,32 +31,19 @@
 
 						<p:column headerText="fecha Ingreso">
 							<h:outputText value="#{kardex.fecingreso}">
-								<f:convertDateTime pattern="EEE MM/dd/yyyy HH:mm:ss" />
-							 </h:outputText>
+								<f:convertDateTime pattern="EEEE MM/dd/yyyy HH:mm:ss" />
+							</h:outputText>
 						</p:column>
 
-						<p:column headerText="Opcion">
+						<p:column headerText="Opcion" width="60" style="width:4%; text-align:center;" >
 							<p:commandButton
 								action="#{mantKardexController.cargar(kardex.idkardex)}"
-								id="iconOnly" icon="ui-icon-disk" title="Icon Only" />
+								id="editar" icon="ui-icon-pencil" title="Editar" />
 						</p:column>
 					</p:dataTable>
 				</p:panel>
-
 			</h:form>
-
-
-
-
 		</ui:define>
 	</ui:composition>
-
-
-
-
-
-
-
-
 </h:body>
 </html>

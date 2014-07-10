@@ -1,6 +1,5 @@
 package com.notariaberrospi.sgn.controller;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -15,10 +14,8 @@ import com.notariaberrospi.sgn.entity.Kaac;
 import com.notariaberrospi.sgn.service.ServiceFactory;
 
 @Controller
-@Scope("session")
-public class ActoController implements Serializable {
-	
-	private static final long serialVersionUID = 1L;
+@Scope("request")
+public class ActoController{
 	
 	private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 	
@@ -29,12 +26,9 @@ public class ActoController implements Serializable {
 	
 	private Kaac acto = new Kaac();
 	
-	public ActoController() {
-		logger.debug("");
-	}
-	
 	@PostConstruct
 	public void init(){
+		logger.info("");
 		actos = serviceFactory.getActoService().buscar();
 	}
 

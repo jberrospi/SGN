@@ -22,8 +22,12 @@
 
 	</application>
 
+	<!-- <factory> -->
+	<!-- <exception-handler-factory>com.notariaberrospi.sgn.handler.ViewExceptionHandlerFactory</exception-handler-factory> -->
+	<!-- </factory> -->
+
 	<factory>
-		<exception-handler-factory>com.notariaberrospi.sgn.handler.ViewExceptionHandlerFactory</exception-handler-factory>
+		<exception-handler-factory>org.primefaces.application.exceptionhandler.PrimeExceptionHandlerFactory</exception-handler-factory>
 	</factory>
 
 </faces-config>
