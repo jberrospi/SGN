@@ -273,7 +273,7 @@
 					</p:row>
 					<p:row>
 						<p:column>
-							<p:dataTable id="intervinienteEmpresa" var="empresa"
+							<p:dataTable id="intervinienteEmpresa" var="empresa" emptyMessage=""
 								value="#{intervinienteEmpresaController.intervinientes}">
 								<p:column headerText="Ruc">
 									<h:outputText value="#{empresa.ruc}" />
@@ -323,7 +323,7 @@
 
 					<p:row>
 						<p:column>
-							<p:dataTable id="intervinientePersona" var="persona"
+							<p:dataTable id="intervinientePersona" var="persona" emptyMessage=""
 								value="#{intervinientePersonaController.intervinientes}">
 								<p:column headerText="Id">
 									<h:outputText value="#{persona.idkaem}" />
