@@ -1,103 +1,94 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
+<!-- <?xml version="1.0" encoding="UTF-8"?> -->
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  -->
+<!-- "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> -->
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-<h:head>
-	<title><ui:insert name="title"></ui:insert></title>
-	<h:outputStylesheet library="css" name="estilos.css" />
-	<ui:insert name="script" />
-	        <style type="text/css">
-            .ui-layout-north {
-                z-index:20 !important;
-                overflow:visible !important;;
-            }
 
-            .ui-layout-north .ui-layout-unit-content {
-                overflow:visible !important;
-            }
-            
-            body {
-                background-color: #FFFFFF;
-            }
-        </style>
-</h:head>
-<h:body>
-	<!-- <f:view transient="true" > -->
+<!-- <f:view contentType="text/html" locale="es_PE"> -->
+	<h:head>
+		<title><ui:insert name="title"></ui:insert></title>
+		<h:outputStylesheet library="css" name="estilos.css" />
+		<h:outputScript library="js" name="scripts.js" />
+		<ui:insert name="css" />
+		<ui:insert name="script" />
+	</h:head>
+	<h:body>
+		<!-- <f:view transient="true" > -->
+		<p:layout fullPage="true">
 
-	<p:layout fullPage="true">
-
-		<p:layoutUnit id="top" position="north" size="100">
-		<h2 style="margin:5px;" >#{mensaje['texto.titulo.sistema']}</h2>
-			<h:form>
-				<p:menubar>
-					<p:submenu label="Kardex" icon="ui-icon-document">
-						<p:menuitem value="Lista Kardex" url="/paginas/modulos/principal/listaKardex.jsf" />
-					</p:submenu>
-					<p:submenu label="Menu 2" icon="ui-icon-document">
-						<p:submenu label="Sub Menu 1" icon="ui-icon-contact">
-							<p:menuitem value="Opcion 1" url="#" />
-							<p:menuitem value="Opcion 2" url="#" />
+			<p:layoutUnit id="top" position="north" size="100">
+				<h2 style="margin: 5px;">#{mensaje['texto.titulo.sistema']}</h2>
+				<h:form>
+					<p:menubar>
+						<p:submenu label="Kardex" icon="ui-icon-document">
+							<p:menuitem value="Lista Kardex"
+								url="/paginas/modulos/principal/listaKardex.jsf" />
 						</p:submenu>
-						<p:menuitem value="Sub Menu 2" url="#" />
-						<p:separator />
-						<p:menuitem value="Sub Menu 3" url="#" />
-					</p:submenu>
-					<p:submenu label="Menu 3" icon="ui-icon-document">
-						<p:submenu label="Sub Menu 1" icon="ui-icon-contact">
-							<p:menuitem value="Opcion 1" url="#" />
-							<p:menuitem value="Opcion 2" url="#" />
+						<p:submenu label="Menu 2" icon="ui-icon-document">
+							<p:submenu label="Sub Menu 1" icon="ui-icon-contact">
+								<p:menuitem value="Opcion 1" url="#" />
+								<p:menuitem value="Opcion 2" url="#" />
+							</p:submenu>
+							<p:menuitem value="Sub Menu 2" url="#" />
+							<p:separator />
+							<p:menuitem value="Sub Menu 3" url="#" />
 						</p:submenu>
-						<p:menuitem value="Sub Menu 2" url="#" />
-						<p:separator />
-						<p:menuitem value="Sub Menu 3" url="#" />
-					</p:submenu>
-					<p:submenu label="Menu 4" icon="ui-icon-document">
-						<p:submenu label="Sub Menu 1" icon="ui-icon-contact">
-							<p:menuitem value="Opcion 1" url="#" />
-							<p:menuitem value="Opcion 2" url="#" />
+						<p:submenu label="Menu 3" icon="ui-icon-document">
+							<p:submenu label="Sub Menu 1" icon="ui-icon-contact">
+								<p:menuitem value="Opcion 1" url="#" />
+								<p:menuitem value="Opcion 2" url="#" />
+							</p:submenu>
+							<p:menuitem value="Sub Menu 2" url="#" />
+							<p:separator />
+							<p:menuitem value="Sub Menu 3" url="#" />
 						</p:submenu>
-						<p:menuitem value="Sub Menu 2" url="#" />
-						<p:separator />
-						<p:menuitem value="Sub Menu 3" url="#" />
-					</p:submenu>
-					<p:menuitem value="Inicio" url="/paginas/modulos/principal/principal.jsf"
-					    icon="ui-icon-home" />
-					<p:menuitem value="Pagina" url="http://www.notariaberrospi.com" target="blank"
-						icon="ui-icon-link" />
+						<p:submenu label="Menu 4" icon="ui-icon-document">
+							<p:submenu label="Sub Menu 1" icon="ui-icon-contact">
+								<p:menuitem value="Opcion 1" url="#" />
+								<p:menuitem value="Opcion 2" url="#" />
+							</p:submenu>
+							<p:menuitem value="Sub Menu 2" url="#" />
+							<p:separator />
+							<p:menuitem value="Sub Menu 3" url="#" />
+						</p:submenu>
+						<p:menuitem value="Inicio"
+							url="/paginas/modulos/principal/principal.jsf"
+							icon="ui-icon-home" />
+						<p:menuitem value="Pagina" url="http://www.notariaberrospi.com"
+							target="blank" icon="ui-icon-link" />
 
-					<f:facet name="options">
-						<p:inputText style="margin-right:10px" placeholder="Buscar" />
-						<p:commandButton type="button" value="Salir"
-							icon="ui-icon-extlink" />
-					</f:facet>
-				</p:menubar>
-			</h:form>
-		</p:layoutUnit>
+						<f:facet name="options">
+							<p:inputText style="margin-right:10px" placeholder="Buscar" />
+							<p:commandButton type="button" value="Salir"
+								icon="ui-icon-extlink" />
+						</f:facet>
+					</p:menubar>
+				</h:form>
+			</p:layoutUnit>
 
-<!-- 		<p:layoutUnit id="bottom" position="south" size="35"> -->
-<!-- 		Desarrollado por Puro Desarrollo -->
-<!-- 		</p:layoutUnit> -->
+			<!-- 		<p:layoutUnit id="bottom" position="south" size="35"> -->
+			<!-- 		Desarrollado por Puro Desarrollo -->
+			<!-- 		</p:layoutUnit> -->
 
-		<p:layoutUnit id="left" position="west" size="200" resizable="false"
-			closable="true" collapsible="true" header="Opciones" minSize="200">
-			<ui:insert name="options" />
-		</p:layoutUnit>
+			<p:layoutUnit id="left" position="west" size="200" resizable="false"
+				closable="true" collapsible="true" header="Opciones" minSize="200">
+				<ui:insert name="options" />
+			</p:layoutUnit>
 
-<!-- 		<p:layoutUnit id="right" position="east" size="250" header="Gallery" -->
-<!-- 			resizable="true" closable="true" collapsible="true" -->
-<!-- 			style="text-align:center"> -->
-<!-- 		</p:layoutUnit> -->
+			<!-- 		<p:layoutUnit id="right" position="east" size="250" header="Gallery" -->
+			<!-- 			resizable="true" closable="true" collapsible="true" -->
+			<!-- 			style="text-align:center"> -->
+			<!-- 		</p:layoutUnit> -->
 
-		<p:layoutUnit id="center" position="center">
-			<ui:insert name="content" />
-		</p:layoutUnit>
+			<p:layoutUnit id="center" position="center">
+				<ui:insert name="content" />
+			</p:layoutUnit>
 
-	</p:layout>
-
-	<!-- </f:view> -->
-</h:body>
+		</p:layout>
+	</h:body>
+<!-- </f:view> -->
 </html>
