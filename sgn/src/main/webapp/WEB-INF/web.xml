@@ -7,8 +7,8 @@
 	<display-name>sgn</display-name>
 
 	<welcome-file-list>
-		<!-- <welcome-file>paginas/modulos/seguridad/login.jsf</welcome-file> -->
-		<welcome-file>paginas/modulos/principal/listaKardex.jsf</welcome-file>
+	<welcome-file>paginas/modulos/seguridad/login.jsf</welcome-file> 
+		<!-- 	<welcome-file>paginas/modulos/principal/listaKardex.jsf</welcome-file>-->
 	</welcome-file-list>
 
 	<session-config>

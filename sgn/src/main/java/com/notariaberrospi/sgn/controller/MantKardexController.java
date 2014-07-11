@@ -72,8 +72,8 @@ public class MantKardexController implements Serializable {
 			}
 			
 			//if(kardex.getTKaac()== null)
-				kardex.setTKaac(new Kaac());
-			//if(kardex.getTEmpleado2() == null)
+				//kardex.setTKaac(new Kaac());
+				if(kardex.getTEmpleado2() == null)
 				kardex.setTEmpleado2(new Empleado());
 			//kardex.setTEmpleado3(new Empleado());
 		}
