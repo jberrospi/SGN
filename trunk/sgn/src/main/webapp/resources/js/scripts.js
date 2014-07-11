@@ -24,3 +24,20 @@ PrimeFaces.locales['es'] = {
 	    day: 'Día',
 	    allDayText : 'Todo el día'
 };
+
+function irArriba(){
+	console.log("irArriba()");
+	$('#center > div').animate({scrollTop:0}, 'slow');
+}
+
+$(document).ready(function() {
+
+//    $('.irArriba').click(
+//	      function(){
+//	    	console.log("subiendo");
+//	      	$('#center > div').animate({scrollTop:0}, 'slow');
+//	        return false;
+//	      }
+//	);
+
+});

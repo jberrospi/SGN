@@ -14,15 +14,7 @@
 			<script type="text/javascript">
 			
 		      $(document).ready(function() {
-		    	  
-		          $('.irArriba').click(
-		      	      function(){
-		      	    	console.log("subiendo");
-		      	      	$('#center > div').animate({scrollTop:0}, 'slow');
-		      	        return false;
-		      	      }
-		      	);
-
+					console.log("inicio");
 		      });
 			
 				function start() {
@@ -368,6 +360,7 @@
 					<p:commandButton value="#{mantKardexController.titulo}"
 						update="form1"
 						styleClass="irArriba"
+						onclick="irArriba()"
 						action="#{mantKardexController.registrarActualizar}"
 						validateClient="true" />
 					<p:commandButton value="Limpiar" type="reset" />
