@@ -36,7 +36,6 @@
 
 			<p:growl />
 
-			<!-- 			<p:panel  header="#{mantKardexController.titulo} Kardex"> -->
 			<h3 style="margin: 5px">#{mantKardexController.titulo} Kardex</h3>
 
 			<h:form id="form1">
@@ -131,8 +130,13 @@
 
 					<p:outputLabel for="fecescritura"
 						value="#{mensaje['campo.kardex.fecEscritura']}" />
-					<p:calendar id="fecescritura" pattern="MM/dd/yyyy HH:mm:ss"
-						value="#{mantKardexController.kardex.fecescritura}" size="50" />
+					<p:calendar id="fecescritura" 
+					            pattern="MM/dd/yyyy HH:mm:ss"
+								value="#{mantKardexController.kardex.fecescritura}"
+								showOn="button"
+								readonlyInput="true"
+								locale="es"
+								size="50" />
 					<p:message for="fecescritura" display="icon" />
 
 					<p:outputLabel for="escritura"
@@ -357,8 +361,6 @@
 						action="#{irPaginaController.listaKardex}" immediate="true" />
 				</p:panelGrid>
 			</h:form>
-
-			<!-- 			</p:panel> -->
 
 			<p:spacer height="5" />
 
