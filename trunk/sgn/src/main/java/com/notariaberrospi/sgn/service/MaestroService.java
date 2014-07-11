@@ -31,16 +31,50 @@ public class MaestroService {
 		
 		
 	}
+	
+	public void modificarAutoincrementKardex() {
+
+		Tabla tablaNumKardex = tablaDAO.buscar("from Tabla where id= ?", Constantes.autoIncremental.ID_KARDEX);
+
+		Long numKardex = tablaNumKardex.getValor1() + 1;
+
+		tablaNumKardex.setValor1(numKardex);
+		tablaDAO.modificar(tablaNumKardex);
+
+	}
+	
+	public void modificarAutoincrement1() {
+
+		Tabla tablaNumEscritura = tablaDAO.buscar("from Tabla where id= ?", Constantes.autoIncremental.ID_ESCRITURA);
+		Tabla tablaNumMinuta = tablaDAO.buscar("from Tabla where id= ?", Constantes.autoIncremental.ID_MINUTA);
+		String numMinutakardex = null;
+
+		Long numEscritura = tablaNumEscritura.getValor1() + 1;
+		Long numMinuta = tablaNumMinuta.getValor1() + 1;
+
+		// Obtener minuta de Kardex
+		numMinutakardex = tablaDAO.buscarString("select max(minuta) from Kardex");
+
+		// Actualiza los campos autoincrementados en 1
+
+		if (!(tablaNumMinuta.getValor1().equals(numMinutakardex))) {
+
+			tablaNumMinuta.setValor1(numMinuta);
+			tablaDAO.modificar(tablaNumMinuta);
+		}
+
+		tablaNumEscritura.setValor1(numEscritura);
+		tablaDAO.modificar(tablaNumEscritura);
+
+	}
+	
 
 	public void modificarAutoincrement() {
 
 		// Obtener ultimos codigo de kardex escritura y minuta
-		Tabla tablaNumKardex = tablaDAO.buscar("from Tabla where id= ?",
-				Constantes.autoIncremental.ID_KARDEX);
-		Tabla tablaNumEscritura = tablaDAO.buscar("from Tabla where id= ?",
-				Constantes.autoIncremental.ID_ESCRITURA);
-		Tabla tablaNumMinuta = tablaDAO.buscar("from Tabla where id= ?",
-				Constantes.autoIncremental.ID_MINUTA);
+		Tabla tablaNumKardex = tablaDAO.buscar("from Tabla where id= ?", Constantes.autoIncremental.ID_KARDEX);
+		Tabla tablaNumEscritura = tablaDAO.buscar("from Tabla where id= ?", Constantes.autoIncremental.ID_ESCRITURA);
+		Tabla tablaNumMinuta = tablaDAO.buscar("from Tabla where id= ?", Constantes.autoIncremental.ID_MINUTA);
 		String numMinutakardex = null;
 
 		// obtener los valores para incrementar en 1

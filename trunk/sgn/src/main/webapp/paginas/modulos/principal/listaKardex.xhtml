@@ -8,39 +8,44 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:body>
 	<ui:composition template="../../recursos/plantilla.xhtml">
-		<ui:define name="content">
-			<h:form id="form1">
-
-				<p:commandButton value="Registrar"
-					action="#{irPaginaController.mantKardex}" id="editar"
+		<ui:define name="options">
+			<h:form>
+				<p:commandButton value="Registrar Kardex"
+					action="#{irPaginaController.mantKardex}" id="btnRegistrarKardex"
 					icon="ui-icon-pencil" title="Registrar" />
+			</h:form>
+		</ui:define>
+		<ui:define name="content">
+			<f:event type="preRenderView"
+				listener="#{mantKardexController.limpiar}" />
+			<h:form id="form1">
+				<p:messages />
 
-				<p:panel header="Lista Kardex">
-					<p:messages />
+				<h3 style="margin: 5px" >Lista Kardex</h3>
 
-					<p:dataTable var="kardex" value="#{listaKardexController.kardexs}">
-						<p:column headerText="Id">
-							<h:outputText value="#{kardex.idkardex}" />
-						</p:column>
+				<p:dataTable var="kardex" value="#{listaKardexController.kardexs}">
+					<p:column headerText="Id">
+						<h:outputText value="#{kardex.idkardex}" />
+					</p:column>
 
-						<p:column headerText="Numero kardex">
-							<h:outputText value="#{kardex.nrokardex}" />
-						</p:column>
+					<p:column headerText="Numero kardex">
+						<h:outputText value="#{kardex.nrokardex}" />
+					</p:column>
 
-						<p:column headerText="fecha Ingreso">
-							<h:outputText value="#{kardex.fecingreso}">
-								<f:convertDateTime pattern="EEEE MM/dd/yyyy HH:mm:ss" />
-							</h:outputText>
-						</p:column>
+					<p:column headerText="fecha Ingreso">
+						<h:outputText value="#{kardex.fecingreso}">
+							<f:convertDateTime pattern="EEEE MM/dd/yyyy HH:mm:ss" />
+						</h:outputText>
+					</p:column>
 
-						<p:column headerText="Opcion" width="60"
-							style="width:4%; text-align:center;">
-							<p:commandButton
-								action="#{mantKardexController.cargar(kardex.idkardex)}"
-								id="editar" icon="ui-icon-pencil" title="Editar" />
-						</p:column>
-					</p:dataTable>
-				</p:panel>
+					<p:column headerText="Opcion" width="60"
+						style="width:4%; text-align:center;">
+						<p:commandButton
+							action="#{mantKardexController.cargar(kardex.idkardex)}"
+							id="editar" icon="ui-icon-pencil" title="Editar" />
+					</p:column>
+				</p:dataTable>
+				<!-- 				</p:panel> -->
 			</h:form>
 			<h:form>
 				<p:confirmDialog header="Vista expirada"
