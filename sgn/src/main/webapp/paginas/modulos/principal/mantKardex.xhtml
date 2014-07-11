@@ -12,6 +12,19 @@
 		<ui:define name="script">
 
 			<script type="text/javascript">
+			
+		      $(document).ready(function() {
+		    	  
+		          $('.irArriba').click(
+		      	      function(){
+		      	    	console.log("subiendo");
+		      	      	$('#center > div').animate({scrollTop:0}, 'slow');
+		      	        return false;
+		      	      }
+		      	);
+
+		      });
+			
 				function start() {
 					PF('statusDialog').show();
 				}
@@ -19,6 +32,7 @@
 				function stop() {
 					PF('statusDialog').hide();
 				}
+				
 			</script>
 
 		</ui:define>
@@ -135,7 +149,6 @@
 								value="#{mantKardexController.kardex.fecescritura}"
 								showOn="button"
 								readonlyInput="true"
-								locale="es"
 								size="50" />
 					<p:message for="fecescritura" display="icon" />
 
@@ -354,6 +367,7 @@
 				<p:panelGrid columns="3">
 					<p:commandButton value="#{mantKardexController.titulo}"
 						update="form1"
+						styleClass="irArriba"
 						action="#{mantKardexController.registrarActualizar}"
 						validateClient="true" />
 					<p:commandButton value="Limpiar" type="reset" />
