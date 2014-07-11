@@ -7,13 +7,18 @@
 	<display-name>sgn</display-name>
 
 	<welcome-file-list>
-	<welcome-file>paginas/modulos/seguridad/login.jsf</welcome-file> 
-		<!-- 	<welcome-file>paginas/modulos/principal/listaKardex.jsf</welcome-file>-->
+		<welcome-file>paginas/modulos/seguridad/login.jsf</welcome-file>
+<!-- 		<welcome-file>paginas/modulos/seguridad/listaKardex.jsf</welcome-file> -->
 	</welcome-file-list>
 
 	<session-config>
 		<session-timeout>30</session-timeout>
 	</session-config>
+
+	<context-param>
+		<param-name>primefaces.THEME</param-name>
+		<param-value>temasgn</param-value>
+	</context-param>
 
 	<!-- <context-param> -->
 	<!-- <param-name>com.sun.faces.numberOfViewsInSession</param-name> -->
@@ -116,15 +121,15 @@
 	<!-- <url-pattern>*.html</url-pattern> -->
 	<!-- </servlet-mapping> -->
 
-<!-- 	<filter> -->
-<!-- 		<filter-name>springSecurityFilterChain</filter-name> -->
-<!-- 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class> -->
-<!-- 	</filter> -->
+	<!-- <filter> -->
+	<!-- <filter-name>springSecurityFilterChain</filter-name> -->
+	<!-- <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class> -->
+	<!-- </filter> -->
 
-<!-- 	<filter-mapping> -->
-<!-- 		<filter-name>springSecurityFilterChain</filter-name> -->
-<!-- 		<url-pattern>/*</url-pattern> -->
-<!-- 	</filter-mapping> -->
+	<!-- <filter-mapping> -->
+	<!-- <filter-name>springSecurityFilterChain</filter-name> -->
+	<!-- <url-pattern>/*</url-pattern> -->
+	<!-- </filter-mapping> -->
 
 
 
