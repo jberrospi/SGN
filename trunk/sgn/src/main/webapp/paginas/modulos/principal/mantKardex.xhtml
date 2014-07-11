@@ -82,7 +82,7 @@
 							<p:inputText size="50" id="fecingreso" disabled="true"
 								value="#{mantKardexController.kardex.fecingreso}"
 								required="false" label="Fecha Ingreso">
-								<f:convertDateTime pattern="EEE MM/dd/yyyy HH:mm:ss" />
+								<f:convertDateTime pattern="EEEE MM/dd/yyyy HH:mm:ss" />
 							</p:inputText>
 						</p:column>
 						<p:column>
@@ -145,7 +145,7 @@
 					<p:outputLabel for="fecescritura"
 						value="#{mensaje['campo.kardex.fecEscritura']}" />
 					<p:calendar id="fecescritura" 
-					            pattern="MM/dd/yyyy HH:mm:ss"
+					            pattern="MM/dd/yyyy HH:mm"
 								value="#{mantKardexController.kardex.fecescritura}"
 								showOn="button"
 								readonlyInput="true"
