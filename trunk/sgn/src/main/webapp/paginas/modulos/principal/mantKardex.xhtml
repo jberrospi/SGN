@@ -369,7 +369,7 @@
 					<p:graphicImage name="/images/ajaxloadingbar.gif" />
 				</p:dialog>
 
-				<p:panel header="Descargar">
+				<p:panel header="Descargar" rendered="#{mantKardexController.kardex==null || mantKardexController.kardex.escritura > 0}">
 
 					<!-- onclick="PrimeFaces.monitorDownload(start, stop);" -->
 					<p:commandButton value="Generar" ajax="false"

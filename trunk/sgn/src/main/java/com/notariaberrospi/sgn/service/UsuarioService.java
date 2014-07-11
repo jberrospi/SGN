@@ -34,7 +34,7 @@ public class UsuarioService {
 	public Usuario buscarLogin(Usuario usuario) {
 		logger.debug("");
 		return usuarioDao.buscar(
-				"from TUSUARIO u where u.USUARIO = ? and u.CLAVE = ?",
+				"from Usuario u where u.usuario = ? and u.clave = ?",
 				usuario.getUsuario(), usuario.getClave());
 	}
 

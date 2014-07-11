@@ -57,4 +57,8 @@ public class KardexDao {
 	public List<Kardex> buscarLista(String query) {
 		return hibernateBaseDao.buscarLista(query);
 	}
+	
+	public String buscarString(String query) {
+		return hibernateBaseDao.buscar(query);
+	}
 }

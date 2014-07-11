@@ -68,7 +68,8 @@ public class MaestroService {
 
 	}
 	
-
+	
+	//realiza el auto increment para los  3: kardex, minuta y escritura
 	public void modificarAutoincrement() {
 
 		// Obtener ultimos codigo de kardex escritura y minuta

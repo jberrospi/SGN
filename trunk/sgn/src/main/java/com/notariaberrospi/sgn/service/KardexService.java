@@ -26,47 +26,85 @@ public class KardexService {
 	public void grabar(Kardex kardex) {
 		logger.debug("");
 		// Obtener ultimos codigo de kardex escritura y minuta
-		Long numKardex = serviceFactory.getTablaService().buscarAutoIncremental(Constantes.autoIncremental.ID_KARDEX).getValor1();
+		Long numKardex = serviceFactory.getTablaService()
+				.buscarAutoIncremental(Constantes.autoIncremental.ID_KARDEX)
+				.getValor1();
 		/*
-		Long numEscritura = serviceFactory.getTablaService().buscarAutoIncremental(Constantes.autoIncremental.ID_ESCRITURA).getValor1();
-		Long numMinuta = null;
-
-		// si la minuta es SM es sin minuta
-		if (!(("SM").equals(kardex.getMinuta()))) {
-			
-			numMinuta =serviceFactory.getTablaService().buscarAutoIncremental(Constantes.autoIncremental.ID_MINUTA).getValor1();
-			kardex.setEscritura(numMinuta.toString());
-		}
-
-		kardex.setEscritura(numEscritura.toString());
-		*/
+		 * Long numEscritura =
+		 * serviceFactory.getTablaService().buscarAutoIncremental
+		 * (Constantes.autoIncremental.ID_ESCRITURA).getValor1(); Long numMinuta
+		 * = null;
+		 * 
+		 * // si la minuta es SM es sin minuta if
+		 * (!(("SM").equals(kardex.getMinuta()))) {
+		 * 
+		 * numMinuta
+		 * =serviceFactory.getTablaService().buscarAutoIncremental(Constantes
+		 * .autoIncremental.ID_MINUTA).getValor1();
+		 * kardex.setEscritura(numMinuta.toString()); }
+		 * 
+		 * kardex.setEscritura(numEscritura.toString());
+		 */
 		kardex.setNrokardex(numKardex.toString());
 		kardexDao.grabar(kardex);
-		//serviceFactory.getTablaService().modificarAutoincrement();
+		// serviceFactory.getTablaService().modificarAutoincrement();
 		serviceFactory.getTablaService().modificarAutoincrementKardex();
-		
+
+	}
+
+	public String buscarString(String query) {
+		logger.debug("");
+		return kardexDao.buscarString(query);
 	}
 
 	public void modificar(Kardex kardex) {
-		logger.debug("");
-		Long numEscritura = serviceFactory.getTablaService().buscarAutoIncremental(Constantes.autoIncremental.ID_ESCRITURA).getValor1();
-		Long numMinuta = null;
 
-		// si la minuta es SM es sin minuta
-		if (!(("SM").equals(kardex.getMinuta()))) {
-			
-			numMinuta =serviceFactory.getTablaService().buscarAutoIncremental(Constantes.autoIncremental.ID_MINUTA).getValor1();
-			kardex.setEscritura(numMinuta.toString());
+		// solo deberia autoincrementar escritura y minuta la primera
+		// modificación
+
+		String escritura = buscarString("SELECT escritura FROM Kardex WHERE idkardex="+ kardex.getIdkardex() + "");
+
+		if (escritura == null || "0".equals(escritura)) {
+
+			logger.debug("");
+			Long numEscritura = serviceFactory
+					.getTablaService()
+					.buscarAutoIncremental(
+							Constantes.autoIncremental.ID_ESCRITURA)
+					.getValor1();
+
+			Long numMinuta = null;
+
+			// si la minuta es SM es sin minuta
+			if (!(("SM").equals(kardex.getMinuta()))) {
+
+				numMinuta = serviceFactory
+						.getTablaService()
+						.buscarAutoIncremental(
+								Constantes.autoIncremental.ID_MINUTA)
+						.getValor1();
+
+				kardex.setEscritura(numMinuta.toString());
+			}
+
+			kardex.setEscritura(numEscritura.toString());
+
 		}
 
-		kardex.setEscritura(numEscritura.toString());
 		kardexDao.modificar(kardex);
-		serviceFactory.getTablaService().modificarAutoincrement1();
+
+		// Solo autoincremento las variables en la primera modificación
+
+		if (escritura == null || "0".equals(escritura)) {
+
+			serviceFactory.getTablaService().modificarAutoincrement1();
+		}
 	}
 
 	public Kardex buscar() {
 		logger.debug("");
-		return kardexDao.buscarUltimoRegistrado("from Kardex where idKardex = ?");
+		return kardexDao
+				.buscarUltimoRegistrado("from Kardex where idKardex = ?");
 	}
 
 	public Kardex buscarPorId(Long idKardex) {
