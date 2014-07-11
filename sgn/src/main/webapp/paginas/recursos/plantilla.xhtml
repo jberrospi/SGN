@@ -10,21 +10,32 @@
 	<title><ui:insert name="title"></ui:insert></title>
 	<h:outputStylesheet library="css" name="estilos.css" />
 	<ui:insert name="script" />
+	        <style type="text/css">
+            .ui-layout-north {
+                z-index:20 !important;
+                overflow:visible !important;;
+            }
+
+            .ui-layout-north .ui-layout-unit-content {
+                overflow:visible !important;
+            }
+            
+            body {
+                background-color: #FFFFFF;
+            }
+        </style>
 </h:head>
 <h:body>
 	<!-- <f:view transient="true" > -->
-	<div id="page">
-		<div id="header">
+
+	<p:layout fullPage="true">
+
+		<p:layoutUnit id="top" position="north" size="100">
+		<h2 style="margin:5px;" >#{mensaje['texto.titulo.sistema']}</h2>
 			<h:form>
 				<p:menubar>
-					<p:submenu label="Menu 1" icon="ui-icon-document">
-						<p:submenu label="Sub Menu 1" icon="ui-icon-contact">
-							<p:menuitem value="Opcion 1" url="#{request.contextPath}" />
-							<p:menuitem value="Opcion 2" url="#" />
-						</p:submenu>
-						<p:menuitem value="Sub Menu 2" url="#" />
-						<p:separator />
-						<p:menuitem value="Sub Menu 3" url="#" />
+					<p:submenu label="Kardex" icon="ui-icon-document">
+						<p:menuitem value="Lista Kardex" url="/paginas/modulos/principal/listaKardex.jsf" />
 					</p:submenu>
 					<p:submenu label="Menu 2" icon="ui-icon-document">
 						<p:submenu label="Sub Menu 1" icon="ui-icon-contact">
@@ -53,8 +64,10 @@
 						<p:separator />
 						<p:menuitem value="Sub Menu 3" url="#" />
 					</p:submenu>
-					<p:menuitem value="Quit" url="http://www.primefaces.org"
-						icon="ui-icon-close" />
+					<p:menuitem value="Inicio" url="/paginas/modulos/principal/listaKardex.jsf"
+					    icon="ui-icon-home" />
+					<p:menuitem value="Pagina" url="http://www.notariaberrospi.com" target="blank"
+						icon="ui-icon-link" />
 
 					<f:facet name="options">
 						<p:inputText style="margin-right:10px" placeholder="Search" />
@@ -63,15 +76,28 @@
 					</f:facet>
 				</p:menubar>
 			</h:form>
-		</div>
+		</p:layoutUnit>
 
-		<div id="content">
-			<p:spacer height="5" />
-			<ui:insert name="content">
-			</ui:insert>
-		</div>
+<!-- 		<p:layoutUnit id="bottom" position="south" size="35"> -->
+<!-- 		Desarrollado por Puro Desarrollo -->
+<!-- 		</p:layoutUnit> -->
 
-	</div>
+		<p:layoutUnit id="left" position="west" size="200" resizable="false"
+			closable="true" collapsible="true" header="Opciones" minSize="200">
+			<ui:insert name="options" />
+		</p:layoutUnit>
+
+<!-- 		<p:layoutUnit id="right" position="east" size="250" header="Gallery" -->
+<!-- 			resizable="true" closable="true" collapsible="true" -->
+<!-- 			style="text-align:center"> -->
+<!-- 		</p:layoutUnit> -->
+
+		<p:layoutUnit id="center" position="center">
+			<ui:insert name="content" />
+		</p:layoutUnit>
+
+	</p:layout>
+
 	<!-- </f:view> -->
 </h:body>
 </html>

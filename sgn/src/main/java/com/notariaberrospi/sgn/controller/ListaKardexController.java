@@ -25,7 +25,7 @@ public class ListaKardexController {
 	private List<Kardex> kardexs;
 
 	@PostConstruct
-	private void init() {
+	public void init() {
 		logger.info("");
 		kardexs= serviceFactory.getKardexService().buscarLista(null);
 	}

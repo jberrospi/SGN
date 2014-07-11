@@ -1,0 +1,5 @@
+Primefaces Showcase
+http://www.primefaces.org/showcase
+
+lista de iconos
+http://api.jqueryui.com/resources/icons-list.html
