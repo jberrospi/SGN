@@ -6,11 +6,11 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-<h:body>
-	<ui:composition template="../../recursos/plantillaPopup.xhtml">
-		<ui:define name="content">
-			<h2></h2>
-			<h:form id="form1">
+<h:head>
+<title>Preguntas Frecuentes</title>
+</h:head>
+<body>
+			<h:form id="formBusquedaListaEmpresa">
 				<h3 style="margin: 5px">Busqueda</h3>
 				<p:panelGrid style="boder:0px;">
 					<f:facet name="header">
@@ -19,7 +19,7 @@
 						</p:row>
 					</f:facet>
 					<p:row>
-						<p:column colspan="1">
+						<p:column>
 							<p:outputLabel for="ruc" value="#{mensaje['campo.busqueda.ruc']}" />
 							<p:inputText size="50" id="ruc"
 								value="#{empresaController.busqueda.ruc}" label="Ruc">
@@ -39,8 +39,8 @@
 					</p:row>
 				</p:panelGrid>
 			</h:form>
-
-			<h:form id="form2">
+			<p:spacer height="10" />
+			<h:form id="formListaEmpresa">
 				<p:panel header="Lista Empresa">
 					<p:messages />
 					<p:dataTable var="empresa" value="#{empresaController.empresas}">
@@ -62,14 +62,13 @@
 						<p:column>
 							<p:commandButton value="Buscar" immediate="true"
 								icon="ui-icon-extlink"
-								actionListener="#{popupController.popupListaPersona}" />
+								actionListener="#{popupController.popupListaPersona}"
+								update=":form1:intervinienteEmpresa" />
 						</p:column>
 							
 						</p:column>
 					</p:dataTable>
 				</p:panel>
 			</h:form>
-		</ui:define>
-	</ui:composition>
-</h:body>
+</body>
 </html>

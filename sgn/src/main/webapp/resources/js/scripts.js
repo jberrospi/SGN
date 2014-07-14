@@ -30,6 +30,12 @@ function irArriba(){
 	$('#center > div').animate({scrollTop:0}, 'slow');
 }
 
+function handleComplete(xhr, status, args) {  
+    if(args.validationFailed) {  
+    	irArriba();
+    }  
+}
+
 $(document).ready(function() {
 
 //    $('.irArriba').click(

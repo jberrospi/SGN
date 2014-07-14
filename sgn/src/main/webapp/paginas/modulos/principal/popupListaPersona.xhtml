@@ -6,17 +6,19 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-<h:body>
-	<ui:composition template="../../recursos/plantillaPopup.xhtml">
-		<ui:define name="content">
-			<h:form>
-				<p:commandButton value="Buscar" immediate="true"
-					icon="ui-icon-extlink"
-					actionListener="#{popupController.popupListaPersona}" />
+<h:head>
+<title>Preguntas Frecuentes</title>
+</h:head>
+<body>
 
-				<p:commandButton value="Modal" type="button"
-					onclick="PF(':formDialog:dlg2').show();" />
-			</h:form>
+<!-- 			<h:form> -->
+<!-- 				<p:commandButton value="Buscar" immediate="true" -->
+<!-- 					icon="ui-icon-extlink" -->
+<!-- 					actionListener="#{popupController.popupListaPersona}" /> -->
+
+<!-- 				<p:commandButton value="Modal" type="button" -->
+<!-- 					onclick="PF('popupAbogado5').show();" /> -->
+<!-- 			</h:form> -->
 			<h2></h2>
 			<h:form id="form5">
 				<p:panel header="Lista Persona">
@@ -33,10 +35,16 @@
 						<p:column headerText="Nombre Completo">
 							<h:outputText value="#{persona.nombreCompleto}" />
 						</p:column>
+						
+						<p:column>
+							<p:commandButton value="Buscar" immediate="true"
+								icon="ui-icon-extlink"
+								actionListener="#{popupController.popupListaPersona}"
+								update=":form1:intervinienteEmpresa" />
+						</p:column>
+						
 					</p:dataTable>
 				</p:panel>
 			</h:form>
-		</ui:define>
-	</ui:composition>
-</h:body>
+</body>
 </html>

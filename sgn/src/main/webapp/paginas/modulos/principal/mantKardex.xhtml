@@ -40,43 +40,33 @@
 
 			<p:growl />
 
-				<p:dialog header="Modal Dialog" widgetVar="popupAbogado"
-					height="100" dynamic="true">
-						<ui:include  src="popupListaAbogado.xhtml"/>
-				</p:dialog>
+			<!-- 				<p:dialog header="Modal Dialog" widgetVar="popupAbogado" -->
+			<!-- 					height="100" dynamic="true"> -->
+			<!-- 						<ui:include  src="popupListaAbogado.xhtml"/> -->
+			<!-- 				</p:dialog> -->
 
 			<h3 style="margin: 5px">#{mantKardexController.titulo} Kardex</h3>
 
-			
-			<h:form id="formDialog">
-			<p:dialog header="Modal Dialogaaa" widgetVar="dlg1"
-					height="100">
-					<h:outputText value="aaaaaa." />
-					<h:form>
-						<p:commandButton value="Buscar" immediate="true"
-							icon="ui-icon-extlink"
-							actionListener="#{popupController.popupListaPersona}" />
-							
-									<p:commandButton value="Modal" type="button"
-								onclick="PF('dlg2').show();" />
-					</h:form>
-					<ui:include  src="/paginas/modulos/principal/popupListaPersona.xhtml"/>
-				</p:dialog>
-				
-				<p:dialog header="Modal Dialog" widgetVar="dlg2"
-					height="100">
-					<h:outputText value="holaaaaaa." />
-				</p:dialog>
-			
-			</h:form>
-			
+
+
+			<p:dialog header="Personas" 
+			          widgetVar="dlgListaPersona"
+			          width="60%" 
+			          height="300">
+				<ui:include src="/paginas/modulos/principal/popupListaPersona.xhtml" />
+			</p:dialog>
+
+			<p:dialog header="Empresa" 
+			          widgetVar="dlgListaEmpresa"
+			          width="60%" 
+			          height="300">
+				<ui:include src="/paginas/modulos/principal/popupListaEmpresa.xhtml" />
+			</p:dialog>
+
 			<h:form id="form1">
-
-
-				
-			<p:commandButton value="Modal" type="button"
-								onclick="PF('popupAbogado').show();" />
-
+			
+<!-- 				<p:commandButton value="Modal" type="button" -->
+<!-- 					onclick="PF('popupAbogado').show();" /> -->
 
 				<p:panelGrid style="boder:0px;">
 					<f:facet name="header">
@@ -305,7 +295,7 @@
 					<p:row>
 						<p:column>
 							<p:commandButton value="Modal" type="button"
-								onclick="PF('dlg1').show();" />
+								onclick="PF('dlgListaEmpresa').show();" />
 							<p:commandButton value="Buscar" immediate="true"
 								icon="ui-icon-extlink"
 								actionListener="#{popupController.popupListaEmpresa}" />
@@ -393,7 +383,8 @@
 				<p:spacer height="10" />
 				<p:panelGrid columns="3">
 					<p:commandButton value="#{mantKardexController.titulo}"
-						update="form1" styleClass="irArriba" onclick="irArriba()"
+						update="form1" styleClass="irArriba"
+						oncomplete="handleComplete(xhr, status, args)"
 						action="#{mantKardexController.registrarActualizar}"
 						validateClient="true" />
 					<p:commandButton value="Limpiar" type="reset" />

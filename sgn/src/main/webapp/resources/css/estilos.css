@@ -14,3 +14,7 @@ body {
 .ui-widget,.ui-widget .ui-widget {
 	font-size: 90% !important;
 }
+
+.ui-state-error,.ui-state-error .ui-state-error{
+	border: 0px;
+}
