@@ -20,20 +20,20 @@
 					</f:facet>
 					<p:row>
 						<p:column colspan="1">
-							<p:outputLabel for="ruc" value="#{mensaje['campo.busqueda.ruc']}" />
-							<p:inputText size="50" id="ruc"
-								value="#{empresaController.busqueda.ruc}" label="Ruc">
+							<p:outputLabel for="nombre" value="#{mensaje['campo.busqueda.nombreCompleto']}" />
+							<p:inputText size="50" id="nombre"
+								value="#{empresaController.busqueda.nombreCompleto}" label="Nombre">
 							</p:inputText>
 						</p:column>
 					</p:row>
 
 					<p:row>
 						<p:column colspan="1">
-							<p:outputLabel for="razsocial"
-								value="#{mensaje['campo.busqueda.razSocial']}" />
-							<p:inputText size="50" id="razsocial"
-								value="#{empresaController.busqueda.razSocial}"
-								label="razsocial">
+							<p:outputLabel for="documento"
+								value="#{mensaje['campo.busqueda.docIdentidad']}" />
+							<p:inputText size="50" id="documento"
+								value="#{empresaController.busqueda.docIdentidad}"
+								label="Doc. Identidad">
 							</p:inputText>
 						</p:column>
 					</p:row>
@@ -43,29 +43,22 @@
 			<h:form id="form2">
 				<p:panel header="Lista Empresa">
 					<p:messages />
-					<p:dataTable var="empresa" value="#{empresaController.empresas}">
-						<p:column headerText="Id">
-							<h:outputText value="#{empresa.idempresa}" />
+					<p:dataTable var="abogado" value="#{abogadoController.abogados}">
+						<p:column headerText="Doc. Identidad">
+							<h:outputText value="#{abogado.TPersona.docidentidad}" />
 						</p:column>
-
-						<p:column headerText="RUC">
-							<h:outputText value="#{empresa.ruc}" />
+						<p:column headerText="Nombre">
+							<h:outputText value="#{abogado.TPersona.nombreCompleto}" />
 						</p:column>
-
-						<p:column headerText="Razon Social">
-							<h:outputText value="#{empresa.razsocial}" />
+						<p:column headerText="Colegiatura">
+							<h:outputText value="#{abogado.colegiatura}" />
 						</p:column>
-
-						<p:column headerText="Representantes">
-						
-						
 						<p:column>
-							<p:commandButton value="Buscar" immediate="true"
+							<p:commandButton value="Seleccionar" immediate="true"
 								icon="ui-icon-extlink"
-								actionListener="#{popupController.popupListaPersona}" />
+								actionListener="#{abogadoController.agregarAbogadoMinuta(abogado.idabogado)}" />
 						</p:column>
-							
-						</p:column>
+					
 					</p:dataTable>
 				</p:panel>
 			</h:form>

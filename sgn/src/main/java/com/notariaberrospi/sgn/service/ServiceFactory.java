@@ -46,6 +46,9 @@ public class ServiceFactory implements Serializable {
 	private EmpresaService empresaService;
 	
 	
+	@Autowired
+	private AbogadoService abogadoService;
+	
 	public Propiedades getProperties() {
 		return properties;
 	}
@@ -126,6 +129,14 @@ public class ServiceFactory implements Serializable {
 
 	public void setEmpresaService(EmpresaService empresaService) {
 		this.empresaService = empresaService;
+	}
+
+	public AbogadoService getAbogadoService() {
+		return abogadoService;
+	}
+
+	public void setAbogadoService(AbogadoService abogadoService) {
+		this.abogadoService = abogadoService;
 	}
 
 	

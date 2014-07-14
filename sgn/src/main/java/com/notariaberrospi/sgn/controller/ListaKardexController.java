@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.notariaberrospi.sgn.bean.Busqueda;
 import com.notariaberrospi.sgn.entity.Kardex;
 import com.notariaberrospi.sgn.service.ServiceFactory;
 
@@ -24,9 +25,14 @@ public class ListaKardexController {
 
 	private List<Kardex> kardexs;
 
+	private Busqueda busqueda;
+
+
+
 	@PostConstruct
 	public void init() {
 		logger.info("");
+		busqueda= new Busqueda();
 		kardexs= serviceFactory.getKardexService().buscarLista(null);
 	}
 
@@ -36,5 +42,14 @@ public class ListaKardexController {
 
 	public void setKardexs(List<Kardex> kardes) {
 		this.kardexs = kardes;
+	}
+	
+	
+	public Busqueda getBusqueda() {
+		return busqueda;
+	}
+
+	public void setBusqueda(Busqueda busqueda) {
+		this.busqueda = busqueda;
 	}
 }

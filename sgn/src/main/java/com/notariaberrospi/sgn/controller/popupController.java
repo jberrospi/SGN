@@ -29,5 +29,8 @@ public class popupController {
 		options.put("contentHeight", 320);
         RequestContext.getCurrentInstance().openDialog("popupListaPersona", options, null);
     }
+	
+	
+	
 
 }
