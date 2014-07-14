@@ -11,6 +11,8 @@
 	<context:property-placeholder
 		location="classpath:com/notariaberrospi/sgn/resources/aplicacion.properties" />
 
+<!-- 	<import resource="applicationSecurity.xml" /> -->
+
 	<import resource="log4j-init.xml" />
 
 	<import resource="dataSourceConfig.xml" />
