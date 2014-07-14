@@ -1,5 +1,6 @@
 package com.notariaberrospi.sgn.controller;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -10,12 +11,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.notariaberrospi.sgn.bean.Busqueda;
 import com.notariaberrospi.sgn.entity.Persona;
 import com.notariaberrospi.sgn.service.ServiceFactory;
 
 @Controller
-@Scope("request")
-public class PersonaController {
+@Scope("session")
+public class PersonaController implements Serializable {
+
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
@@ -28,6 +36,8 @@ public class PersonaController {
 
 	private String conyuge;
 
+	private Busqueda busqueda;
+	
 	public PersonaController() {
 		logger.debug("");
 		persona = new Persona();
@@ -37,6 +47,7 @@ public class PersonaController {
 	public void init(){
 		logger.info("");
 		personas= serviceFactory.getPersonaService().buscarPersonas(persona);
+		
 	}
 	
 	public Persona getPersona() {
@@ -58,7 +69,7 @@ public class PersonaController {
 	}
 
 	public void registrar() {
-		boolean indicador = false;
+		//boolean indicador = false;
 		if(persona.getIdpersona()!= null){
 			logger.debug("Registrar Persona");
 			serviceFactory.getPersonaService().grabar(persona);
@@ -79,5 +90,16 @@ public class PersonaController {
 		this.personas = personas;
 	}
 
-	
+
+	public Busqueda getBusqueda() {
+		return busqueda;
+	}
+
+	public void setBusqueda(Busqueda busqueda) {
+		this.busqueda = busqueda;
+	}
+
+
+
+
 }

@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.notariaberrospi.sgn.bean.Busqueda;
 import com.notariaberrospi.sgn.dao.PersonaDAO;
 import com.notariaberrospi.sgn.entity.Persona;
 
@@ -48,7 +49,36 @@ public class PersonaService {
 			
 			
 		}
-		return personaDAO.buscarLista(query);	}
+		return personaDAO.buscarLista(query);
+		
+	}
+
+	public List<Persona> buscarPersonas(Busqueda busqueda) {
+		logger.debug("");
+		String query="From Persona ";
+		
+		/*if (busqueda!=null) {
+			if (busqueda.getDocidentidad()!=null && busqueda.getNombreCompleto()!=null) {
+				query="WHERE ="+busqueda.getDocidentidad()+" and prinom like %"+busqueda.getDocidentidad()+"%";
+			} else if (busqueda.getDocidentidad()!=null){
+				query="WHERE docidentidad="+busqueda.getRuc();
+			}else if(busqueda.getFecFin()!=null){
+				query="WHERE prinom like %"+busqueda.getFecFin()+"%";
+			}
+			
+			
+		}*/
+		return personaDAO.buscarLista(query);
+	}
+
+	public List<Persona> buscarIntervinienteEmpresa(Long idEmpresa) {
+	
+		logger.debug("");
+		String query="Select rep.TPersona From Emrep rep  where rep.TEmpresa.idempresa="+idEmpresa;
+		
+		
+		return personaDAO.buscarLista(query);
+	}
 
 	
 }

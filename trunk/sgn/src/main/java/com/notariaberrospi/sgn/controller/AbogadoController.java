@@ -1,6 +1,5 @@
 package com.notariaberrospi.sgn.controller;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -12,61 +11,50 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.notariaberrospi.sgn.bean.Busqueda;
-import com.notariaberrospi.sgn.entity.Empleado;
-import com.notariaberrospi.sgn.entity.Empresa;
+import com.notariaberrospi.sgn.entity.Abogado;
 import com.notariaberrospi.sgn.service.ServiceFactory;
 
 @Controller
-@Scope("session")
-public class EmpresaController implements Serializable {
-
-	private static final long serialVersionUID = 1L;
-
+@Scope("request")
+public class AbogadoController{
+	
 	private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 	
 	@Autowired
 	private ServiceFactory serviceFactory;
 	
-	private List<Empresa> empresas;
-	
-	private Empresa empresa;
-	
-	private Empleado empleado = new Empleado();
+	private List<Abogado> abogados;
 	
 	private Busqueda busqueda;
-	
-	
-	public EmpresaController() {
-		logger.debug("");
-	}
 	
 	@PostConstruct
 	public void init(){
 		logger.info("");
-		busqueda=new Busqueda();
-		empresas= serviceFactory.getEmpresaService().buscarEmpresas(empresa);
+		busqueda = new Busqueda();
+		abogados = serviceFactory.getAbogadoService().buscar();
 	}
 
-	public List<Empresa> getEmpresas() {
-		return empresas;
-	}
-
-
-	public Empleado getEmpleado() {
-		return empleado;
-	}
-
-	public void setEmpleado(Empleado empleado) {
-		this.empleado = empleado;
+	public void agregarAbogadoMinuta(Long idAbogado){
+		
+		
+		
 	}
 	
+	public List<Abogado> getAbogados() {
+		return abogados;
+	}
+
+	public void setAbogados(List<Abogado> abogados) {
+		this.abogados = abogados;
+	}
+
 	public Busqueda getBusqueda() {
 		return busqueda;
-		
 	}
 
 	public void setBusqueda(Busqueda busqueda) {
 		this.busqueda = busqueda;
 	}
+
 
 }

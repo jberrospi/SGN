@@ -13,6 +13,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.notariaberrospi.sgn.entity.DetKaem;
+import com.notariaberrospi.sgn.entity.Emrep;
 import com.notariaberrospi.sgn.service.ServiceFactory;
 
 @Controller
@@ -28,7 +29,11 @@ public class IntervinienteEmpresaController implements Serializable {
 	
 	private List<DetKaem> intervinientes;
 	
+	private List<Emrep> representantes;
+	
 	private DetKaem interviniente = new DetKaem();
+	
+
 	
 	@PostConstruct
 	public void init(){
@@ -40,6 +45,11 @@ public class IntervinienteEmpresaController implements Serializable {
 	public void destroy(){
 		logger.info("");
 	}
+	
+	public List<Emrep> buscarIntervinienteEmpresa(Long idEmpresa){
+		return null;
+	}
+	
 
 	public void eliminarInterviniente(Long i){
 		System.out.println("MANDEEE"+i);

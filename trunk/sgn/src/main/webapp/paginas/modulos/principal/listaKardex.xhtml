@@ -19,9 +19,45 @@
 			<f:event type="preRenderView"
 				listener="#{mantKardexController.limpiar}" />
 			<h:form id="form1">
-				<p:messages />
+				<h3 style="margin: 5px">Lista Kardex</h3>
+				<p:panelGrid style="boder:0px;">
+					<f:facet name="header">
+						<p:row style="center">
+							<p:column colspan="3">Busqueda</p:column>
+						</p:row>
+					</f:facet>
+					<p:row>
+						<p:column colspan="2">
+							<p:outputLabel for="nrokardex"
+								value="#{mensaje['campo.kardex.nroKardex']}" />
+							<p:inputText size="50" id="nrokardex"
+								value="#{listaKardexController.busqueda.nrokardex}"
+								label="Nro. Kardex">
+							</p:inputText>
+						</p:column>
+					</p:row>
 
-				<h3 style="margin: 5px" >Lista Kardex</h3>
+					<p:row>
+						<p:column colspan="1">
+							<p:outputLabel for="fecInicio"
+								value="#{mensaje['campo.busqueda.fecInicio']}" />
+							<p:calendar id="fecInicio" pattern="EEE MM/dd/yyyy"
+								value="#{listaKardexController.busqueda.fecInicio}"
+								showOn="button" readonlyInput="true" size="50" />
+							<p:message for="fecInicio" display="icon" />
+						</p:column>
+						<p:column colspan="1">
+							<p:outputLabel for="fecFin"
+								value="#{mensaje['campo.busqueda.fecFin']}" />
+							<p:calendar id="fecFin" pattern="EEE MM/dd/yyyy"
+								value="#{listaKardexController.busqueda.fecFin}" showOn="button"
+								readonlyInput="true" size="50" />
+							<p:message for="fecFin" display="icon" />
+						</p:column>
+					</p:row>
+				</p:panelGrid>
+			</h:form>
+			<h:form id="form2">
 
 				<p:dataTable var="kardex" value="#{listaKardexController.kardexs}">
 					<p:column headerText="Id">
