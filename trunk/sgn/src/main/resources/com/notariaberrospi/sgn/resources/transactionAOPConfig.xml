@@ -14,7 +14,7 @@
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
 
-			<tx:method name="buscar*" read-only="true" propagation="REQUIRED" />
+			<tx:method name="buscar*" read-only="true" propagation="SUPPORTS" />
 			<tx:method name="grabar*" read-only="false" propagation="REQUIRED"
 				isolation="DEFAULT" rollback-for="Throwable" />
 			<tx:method name="modificar*" read-only="false" propagation="REQUIRED"
