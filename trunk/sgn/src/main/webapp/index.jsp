@@ -1,0 +1,1 @@
+<% response.sendRedirect("paginas/modulos/principal/listaKardex.jsf"); %>
