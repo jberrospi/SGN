@@ -84,15 +84,6 @@
 				</p:dataTable>
 				<!-- 				</p:panel> -->
 			</h:form>
-			<h:form>
-				<p:confirmDialog header="Vista expirada"
-					visible="#{not empty param['expired']}"
-					message="La vista ha expirado" severity="alert"
-					widgetVar="dlgViewExpired" modal="true" closeOnEscape="true">
-					<p:commandButton value="Aceptar" type="button"
-						onclick="PF('dlgViewExpired').hide()" />
-				</p:confirmDialog>
-			</h:form>
 		</ui:define>
 	</ui:composition>
 </h:body>
